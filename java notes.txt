@@ -1,0 +1,89 @@
+
+Literals
+========
+
+int age = 10;
+10 is value or literal
+
+Integral Literal types
+
+1. Decimal Types:
+	- base 10 Number
+	 int age = 10;
+	 System.out.println(age); //10
+	 
+2. Octal Numbers:
+	- are base 8 numbers
+	
+	- Allowed digits in octal numbers are 0 to 7
+	- Octals are represented as base 8 numbers
+	- Octal literals Prefixed with 0 digit.
+		exp : 010;
+	
+	int x =010;
+	System.out.println(x);
+	
+3. Hexadecimal Numbers:
+	- are base 16 numbers
+	
+	- Allowed digits in Hexadecimal numbers are 0 to 9 A,B,C,D,E,F
+	10-A
+	11-B
+	12-C
+	13-D
+	14-E
+	15-F
+	- hexadecimal numbers are prefixed with 0x
+	ex: 0x10;
+	
+invalid numbers are 0xg2, 0x12h
+
+4. Binary Numbers:
+	- are base 2 numbers
+	
+	- Allowed digits are 0 and 1
+	- binary numbers must be prefixed with 0b or 0B
+	
+Conversion of one type to another type is called type casting
+
+1.Implicit Widening (automatically)==> when trying to convert smaller to Bigger data type
+				byte b =10;
+			 int intVar = b;//implicit casting or Widening
+			 No need of any special notation
+2.Explicit narrowing (manually)==> when trying to convert bigger to smaller data type
+			long longVar=3000;
+			int intVariable = longVar; //Explicit or Narrowing
+			need special notation
+			
+		Eg: int count = 10;
+			short shortCount = (short)count;
+			
+	int to byte explicit casting
+	
+	int i = 130;
+	byte b = (int)i;
+	
+1. 130 is converted in to binary numbers
+		
+		130 - 0000 0000 0000 0000 0000 0000 1000 0010 for int
+		for byte only 8 bits
+		so last 8 bits 
+		1000 0010
+		
+		Inverting of 0 to 1's and 1 to 0'short
+		
+		1000 0010 ==> 0111 1101
+		
+		add 1,
+		
+		01111101
+			  +1
+		---------
+	    01111110 ==> binary ==> -126
+			
+			
+	
+	
+
+
+ 
