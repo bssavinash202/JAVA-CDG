@@ -80,10 +80,20 @@ Conversion of one type to another type is called type casting
 			  +1
 		---------
 	    01111110 ==> binary ==> -126
-			
-			
-	
-	
 
-
- 
+Operator:
+---------
+			An Operator is a symbol that represents an action to be performed on one or more operands.
+		
+		Eg: a + b;
+		a, b are operands
+		+ is a operator.
+	Different types of operators are supported by java
+	1. Arthmetic operators
+	2. relational operators
+	3. Bitwise Operators
+	4. Logical Operators
+	5. Assigment Operators
+	6. Unary Operators
+	7. Ternary Operator
+	8. Shift Operator
