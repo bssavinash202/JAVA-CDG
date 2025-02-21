@@ -1,10 +1,7 @@
-class TypeCasting{
-
-	public static void main(String args[]){
-	
-		char ch = 'A'; // 2bytes
-		int num = ch;
-		System.out.println(num);
+class LogicalOperators{
+	public static void main(String[] args){
+		
 	
 	}
+
 }

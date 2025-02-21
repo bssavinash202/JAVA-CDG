@@ -1,4 +1,53 @@
 
+	JAVA NOTES:
+	==========
+public class HelloWorld {
+		 
+	public static void main(String args[])
+		 {
+			int age = 22; 
+			int Age = 32;
+			System.out.println(age);
+			System.out.println("Hello World! Avinash B");
+		 }
+	
+	}
+
+public class PrimitiveDataTypes{
+	public static void main(String args[]){
+		
+		// Variable Creation
+		// syntax: datatype variableName = value;
+		//integer dataType
+		byte smallNumber = 70;
+		short shortNumber = 15000;
+		int integerNumber = 3765;
+		long largeNumber = 9949405866L;
+		
+		//decimal DataType
+		float decimalNumber = 3.14f;
+		double largeDecimal = 3.14159d;
+		
+		//char
+		char character ='A';
+		
+		//boolean
+		boolean isJavaFun = true;
+		
+		System.out.println(smallNumber);
+		System.out.println(shortNumber);
+		System.out.println(integerNumber);
+		System.out.println(largeNumber);
+		
+		System.out.println(decimalNumber);
+		System.out.println(largeDecimal);
+
+		System.out.println(character);
+		System.out.println(isJavaFun);
+			
+	}
+
+}
 Literals
 ========
 
@@ -44,6 +93,29 @@ invalid numbers are 0xg2, 0x12h
 	- Allowed digits are 0 and 1
 	- binary numbers must be prefixed with 0b or 0B
 	
+	
+class LiteralsDemo{
+	
+	public static void main(String args[]){
+	
+		int octalNumber = 010; //  010 = 1*8^1+0*8^0
+		System.out.println("Octal Number is: "+octalNumber);
+		//int x = 0898;
+		//System.out.println(x); throws error because 0898 is out of range for 0-7
+		
+		int hexaNum = 0x1A;
+		System.out.println("Hexa Decimal Number is: "+hexaNum);
+		
+		//1*16^1 + 10*16^0
+		
+		int binNum = 0b1010;
+		System.out.println("Binary Number is: "+binNum);
+	
+		int number = 10;
+		long longNumber = number; // Casting of int to long ==> Type casting
+	}
+}
+	
 Conversion of one type to another type is called type casting
 
 1.Implicit Widening (automatically)==> when trying to convert smaller to Bigger data type
@@ -80,6 +152,40 @@ Conversion of one type to another type is called type casting
 			  +1
 		---------
 	    01111110 ==> binary ==> -126
+		
+		
+	class TypeCasting{
+
+			public static void main(String args[]){
+	
+		//implicit casting from char to int
+		char ch = 'A'; // 2bytes
+		int num = ch;
+		System.out.println(num);
+		
+		byte b = 10;
+		short s = b;
+		System.out.println(s); // byte==>short
+		
+		int i = s; //short ==> int
+		System.out.println(i);
+		
+		long l = i; // int ==> long
+		float f = l; // long ==> float
+		System.out.println(l);
+		System.out.println(f);
+		
+		// explicit casting
+		double d1 = 123.4556;
+		int i1 = (int)d1; //double ==> int
+		System.out.println(i1); //123
+		
+		int largeNum = 130;
+		byte by = (byte)largeNum;
+		System.out.println(by);
+		
+	}
+}
 
 Operator:
 ---------
@@ -97,3 +203,171 @@ Operator:
 	6. Unary Operators
 	7. Ternary Operator
 	8. Shift Operator
+	
+1. Arthmetic Operators
+
+	public class ArithmeticOperations {
+    public static void main(String args[]) {
+        
+        int num1 = 100;
+		int num2 = 12;
+
+        
+        int sum = num1 + num2;         // Addition
+        int difference = num1 - num2;  // Subtraction
+        int product = num1 * num2;     // Multiplication
+        int quotient = num1 / num2;    // Division
+        int remainder = num1 % num2;   // Modulus
+
+        
+        System.out.println("Number 1: " + num1); // 100
+        System.out.println("Number 2: " + num2); //12
+        System.out.println("Addition: " + sum); //112
+        System.out.println("Subtraction: " + difference); //88 
+        System.out.println("Multiplication: " + product); //1200
+        System.out.println("Division: " + quotient); //8
+        System.out.println("Modulus: " + remainder); // 4
+    }
+}
+Increment and Decrement Operators:
+==================================
+++ Operator => it increments the operand by 1
+int x = 10;
+	++x; -> Pre increment Operator	==> In pre increment the variable is first incremented and then the updated value is used in
+								expression
+	x++; -> Post increment Operator ==> In post increment the value of the variable is first used in the expression and later it is
+			incremented
+	
+-- Operator => it decrements the operand by 1
+int y = 10;
+	--y; -> Pre decrement Operator ==> In pre decrement the variable is first decremented and then the updated value is used in
+								expression
+	y--; -> Post decrement Operator ==> In post decrement the value of the variable is first used in the expression and later it is
+			decremented
+
+ class IncrementDecrement{
+	public static void main(String[] args){
+		
+		//Increment
+			//int i = 5;
+			//int x = ++i;
+			//int x = i++;
+			//System.out.println(x);
+			//System.out.println(i);
+			
+		//Decrement
+			int i = 5;
+			// int x =i--;
+			int x = --i;
+			System.out.println(x);
+			System.out.println(i);	
+	}
+ }
+Assigment Opeartors
+===================
+	Are used to assign some values to the variables
+	they are used to assign the values on the right hand side to the variable on the left hand side
+	syntax:
+	variable = value;
+	int b = 10;
+	int a = b;
+	Types of Assigment Opeartors:
+	-----------------------------
+	+= -> a+=b -> a=a+b
+	-= -> a-=b -> a=a-b
+	*= -> a*=b -> a=a*b
+	/= -> a/=b -> a=a/b
+	%= -> a%=b -> a=a%b
+	
+class AssignmentOperators {
+	public static void main(String[] args) {
+	
+	// = assigment Operators
+	int a = 10;
+	int b = 5;
+	//System.out.println("a+=b: "+(a+=b));
+	//System.out.println("a-=b: "+(a-=b));
+	//System.out.println("a*=b: "+(a*=b));
+	//System.out.println("a/=b: "+(a/=b));
+	System.out.println("a%=b: "+(a%=b));	
+	}
+}
+
+Relational Opeartors:
+=====================
+Relational Opeartors are used to compare the value or expression
+ their result is boolean either true or false
+==,!=,>,<,>=,<=
+
+class RelationalOp{
+	public static void main(String[] args){
+		int a,b;
+		a = 10;
+		b = 20;
+		System.out.println(a>b);
+		System.out.println(a<b);
+		System.out.println(a==b);
+		System.out.println(a!=b);
+		System.out.println(a>=b);
+		System.out.println(a<=b);	
+	}
+}
+
+Boolean Operators:
+==================
+	- used with boolean values	
+	- Always return true or false
+	Different Boolean operators
+	a. Boolean AND - &
+		- returns true only if both operands are true
+	b. Boolean OR - |
+		- returns true if any one of the operand is true
+	c. Boolean XOR - ^
+		- returns true only if operands are different
+			eg: true ^ false = true
+		- returns false if both operands are same
+			eg: true ^ true = false
+				false ^ false = false
+	d. Boolean Not - !
+		- Boolean not reverses the boolean value
+			eg: !true = false
+				!false = true
+
+class BooleanOperators{
+	public static void main(String[] args){
+		boolean a = true;
+		boolean b = false;
+		
+		// Boolean Operations
+		System.out.println("Boolean AND: "+ (a&b));//false
+		System.out.println("Boolean OR: "+ (a|b));//true
+		System.out.println("Boolean XOR: "+ (a^b));//true
+		System.out.println("Boolean NOT: "+ (!a));//false
+	}
+}
+Logical Operators:(Short Circuit Operators)
+==================
+	- are used to perform logical operations a=on boolean operands
+	- Logical AND Operator - &&
+		- returns true only if both operands/expressions are true
+			eg: expression1 && expression2 
+	- Logical OR Operator - ||
+		- returns true if any one of the operand/expression is true
+	- Logical NOT - !
+		- reverses the expression's/operand's boolean value
+
+class LogicalOperators{
+	public static void main(String[] args){
+		int x = 5;
+		int y = 10;
+			//Logical AND
+		boolean result = (x>0 && y>5);
+		System.out.println("Logical AND: "+result );// true
+			//Logical OR
+		boolean result1 = (x>10 || y>5);
+		System.out.println("Logical OR: "+result1 );// true
+			//Logical NOT
+		boolean result2 = !(x>y);
+		System.out.println("Logical NOT: "+result2 );// true
+	}
+}
