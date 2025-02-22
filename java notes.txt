@@ -371,3 +371,64 @@ class LogicalOperators{
 		System.out.println("Logical NOT: "+result2 );// true
 	}
 }
+Logical ==> short circuited 
+x=0; y=0;
+boolean result2 = (++x<0 && ++y>0);
+	System.out.println(result2);//false
+	System.out.println("X: "+x);//1
+	System.out.println("Y: "+y);//0
+	
+	here 1st expression is false so the 2nd expression cannot be evaluated so 
+	there is a break so y cannot be incremented
+	
+	
+boolean 
+System.out.println("Boolean Operators &");
+	x=0; y=0;
+	boolean result4 = (++x<0 & ++y>0);
+	System.out.println(result4);false
+	System.out.println("X: "+x);//1
+	System.out.println("Y: "+y);//1
+	
+	here the boolean operator checks both the expressions if the solution comes in 1st 
+	expression
+	
+CONTROL FLOW STATEMENTS:
+------------------------
+Control flow refers to the order in which the statements and block of code are executed during the runtime
+of the program
+
+	- Control flow determines the flow of execution based on certain conditions
+	- Control flow allow the program to make decisions and repeat the actions based on those 
+	conditions
+
+	Control flow statements can be categorized into 2 typesL
+	1. Decision Making statements
+	2. Looping Statements
+	
+Decision Making statements:
+	i. if statement: syntax:if(conditions or Boolean exp)
+								// statement1;
+							else
+								// statement2;
+	ii. if else ladder: syntax: if(condition1 or Boolean_exp1)
+									{
+								statement1	
+									}
+								else if(condition2 or Boolean_exp2)
+										{
+										statement2
+										}
+									else if(condition3 or Boolean_exp3)
+											{
+											statement3
+											}
+										else if(condition4 or Boolean_exp4)
+												{
+												statement4
+												}
+								else
+								{
+								statement5;
+								}
+								
