@@ -1,5 +1,6 @@
-class CustomerSupport{
 import java.util.Scanner;
+class CustomerSupport{
+
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("1. Billing Issues");
@@ -29,7 +30,6 @@ import java.util.Scanner;
 				break;
 			default: 
 				System.out.println("Invalid Selection, Please Enter Valid option");
-				break;
 			
 			
 		

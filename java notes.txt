@@ -1,7 +1,7 @@
 
 	JAVA NOTES:
 	==========
-public class HelloWorld {
+public class 2 {
 		 
 	public static void main(String args[])
 		 {
@@ -431,4 +431,765 @@ Decision Making statements:
 								{
 								statement5;
 								}
-								
+		
+import java.util.Scanner;
+class CustomerDiscountSystem{
+
+	public static void main(String[] args){
+	
+		int bronzePoints = 1000;
+		int silverPoints = 5000;
+		int goldPoints = 10000;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter you Loyalty Points: ");
+		int points = sc.nextInt();
+		// Determine the discounts based on the points
+		if(points>=goldPoints){
+			System.out.println("You are a Gold Member");
+			System.out.println("You will get a 50% discount on all purchases");
+		}else if(points>=silverPoints){
+			System.out.println("You are a Silver Member");
+			System.out.println("You will get a 20% discount on all purchases");
+		}else if(points>=bronzePoints){
+			System.out.println("You are a Bronze Member");
+			System.out.println("You will get a 10% discount on all purchases");
+		}
+		else{
+			System.out.println("No discount available earn more loyalty points");
+		}
+		sc.close();
+	}
+}
+ternary Operator:
+------------------
+
+Syntax: variable = (condition)? value1 : value2
+
+Switch Statement:
+------------------
+	Switch statement is used for branching logic based on the value of a variable.
+	
+		Its Alternate for if else Statements when we check a single variable 
+		against different possible values(cases).
+		
+		It works with byte short int, char, String, or enum type
+		
+		Support break Statement to exit the switch block after a case matches
+	
+Looping Statements:
+-------------------
+	Looping statements are used to repeatedly execute the block of code
+	Types:-
+	
+	1. for loop
+	2. while loop
+	3. do while loop
+	
+1. for: for looping statements
+--------
+	for(intialization;condition;updation){
+	/*	
+		statements
+	*/
+	}
+2. while: 
+----------
+	while(condition){
+	/*
+		Statements
+	*/
+	}
+	- Also called as a top tested loop
+	  Every time the testing of boolean expression will be done at the top of the loop
+	- suppose if the boolean expression is false at the very first time, program control
+	  will not execute the body of the loop atleast once.
+	 - so the minimum number of executions of the while loop body is zero.
+	 
+3. do while:
+------------
+	do{
+	/*
+		Statements;
+	*/
+	}while(condition);
+	- Also called as a bottom tested loop
+	- the condition will be executed after the body of the loop is executed.
+	- if the condition is true, the program control goes to the next iteration
+      otherwise it comes out of the loop
+	- As the first time body of the loop executes without having to rest the condition. 
+	  So minimum number of execution is one.
+	  
+Jumping statements:
+-------------------
+	Jumping statements in java are used to transfer control from one part of the program 
+	to another.
+	- these statements are mainly used to change the normal flow of execution based on certain condition.
+	
+	- The following are the jumping statements used in java
+	1. break:-
+			- Syntax: break;
+			-  when a break statement is used inside a loop, program control jumps 
+				out from the loop without executing the remaining Iterations in the 
+				current loop.
+	2. continue:-
+			- Syntax: continue;
+			- when a continue is used inside a loop program control skips the current iteration,
+				and continues with the remaining iterations in the current loop.
+	3. return
+	
+	
+Arrays:
+--------
+package arrays;
+
+public class ArrayDemo1 {
+
+	public static void main(String[] args) {
+		
+//		int a = 10;
+//		int b = 20;
+		
+		//int intArray[] = {10,20};// inline creation of array, generally not used
+		
+		int intArray[] = new int[3];// used frequently
+		int arrayLength = intArray.length;
+		System.out.println("length of array is: "+arrayLength);
+		intArray[0]=10;
+		intArray[1]=20;
+		intArray[2]=30;
+		System.out.println(intArray);// address of intArray is printed
+		for(int i =0;i<arrayLength;i++) {
+			System.out.println(intArray[i]);
+		}
+		//System.out.println(intArray[0]+intArray[1]);
+		
+
+	}
+
+}
+
+
+Jagged Array:
+-------------
+it is a multi-dimensional array where the inner arrays can have different lengths
+
+	- It is also called as ragged array, because the structure is irregular.
+	- Jagged arrays is an array of arrays with different sizes
+	
+	
+	package firstjavaproject;
+
+public class JaggedArray {
+	public static void main(String[] args) {
+		// declaration of jagged array
+		
+		int[][] jaggedArr = new int[3][];
+		
+		//define different column sizes for each row
+		
+		jaggedArr[0] = new int[] {1,2,3};// row 1-> 3 columns
+		jaggedArr[1] = new int[] {9}; // row 2 -> 1 columns
+		jaggedArr[2] = new int[] {5,6,7,8};// row 3 -> 4 columns
+		
+		for(int i = 0;i<jaggedArr.length;i++) {
+			for(int j =0;j<jaggedArr[i].length;j++) {
+				System.out.print(" "+jaggedArr[i][j]);
+			}
+			System.out.println("");
+		}
+	}
+
+}
+
+
+
+Strings:
+----------
+	- String in java is sequence/group/array of characters
+	- String can be created in differe ways
+	
+	1. Using Literal 
+	 Eg: String myString = "Hello";
+		
+		String created usinh a literal (directly assigning the const value to s string variable 
+										without new keyword)
+		Literals stored in a special memory region inside the heap memory called
+		"String constant pool" or "String pool" SCP/SP or pool
+	
+	2. String can also be created using a 'new' keyword.
+	 Eg: String company = new String("Codegnan");
+	 
+	 
+	 String-->Predefined Class
+	 company--> Reference variable stored in stack memory
+	 new --> new keyword which used to allocate memory For object in heap, each object have unique address
+	 String()-->String class Constructor which is used to construct objects of String
+	 
+	 Strings created using a new keyword are stored in a memory area called heap memory
+	 the variable which is referencing this String object is stored in Stack memory
+	 
+	 When a same String object is created again with new keyword, a new String object gets created in heap
+	 memory
+		String myGreeting = new String("Good");
+		String myGreeting1 = new String("Good");
+			in the above scenario  2 separate string objects are created in heap
+	In case of String Literals 
+	when a same literal is created again, anew string object will not be Created 
+		String greeting1 = "Hi";
+		String greeting2 = "Hi";
+			In the above w Hi objects will not be created only a single Hi objects exists
+			in SCP/SP
+			In SCP/SP a new object by JVM only if it is already not present in the pool
+	
+	This is the reason why the performance of string literals are good when compared to strings created
+	with new keyword
+	the memory is optimized when string literals are used (less amount of memory is consumed)
+			
+	 
+	 +----------+---------------+
+	 |	Stack	|	Heap		|
+	 |----------+---------------|
+	 |	company-|-->Codegnan----|--> String with new keyword
+	 |			|	 _____		|
+	 |			|	|	  |		|
+	 | myString-|-->|Hello|-----|--> String with literal stored in SCP/SP in the Heap memory
+	 |			|	|_____|		|
+	 +----------+---------------+
+	 
+Opeartor "==" and equals() method
+== Operator:
+------------
+== operator checks the reference equality, It retur a boolean true or false 
+	- if both the objects are refering to the same address then == returns true
+	- if both the objects are refering to the different address then == returns false
+equals method:
+--------
+equals() method compares the content of the string object.
+equals method returns true if both the objects have same content or else false
+
+String Immutable:
+-----------------
+	The word 'Immutable' means unchangable or unmodifiable or unaltered 
+	the opposite for immutable is mutable.
+	Mutable means something which changes or something which can be changed
+	
+	String Objects in java are by default 'immutable', meaning they cannot be changed once created
+	
+	Even when concat() method is applied on string, the string remains unchanged.
+	A new String object will be created in heap memory
+
+Methods of String:
+-----------------
+	1. concat(): concat() is used for combining strings
+	2. intern(): When the intern() method is invoked, if the pool already contains astring equal to
+		this String object as determined by the equals(Object) method, then the string from the pool is returned. 
+		Otherwise, this String object is added to thepool and a reference to this String object is returned.
+	3. indexOf(char ch): returns the index of the first occurance of the specified character
+	3. substring(beginIndex,endIndex): used to extract the part of the string using beginingIndex and endIndex
+	Returns a string that is a substring of this string. Thesubstring begins at the specified beginIndex andextends to the character at index endIndex - 1.Thus the length of the substring is endIndex-beginIndex. 
+Examples: 
+
+ "hamburger".substring(4, 8) returns "urge"
+ "smiles".substring(1, 5) returns "mile"
+ 
+Parameters:beginIndex the beginning index, inclusive.endIndex the ending index, exclusive.
+Returns:the specified substring.Throws:IndexOutOfBoundsException - if the beginIndex is negative, or endIndex 
+is larger than the length ofthis String object, or beginIndex is larger than endIndex.
+	4. charAt(int index) method: used to extract character at the specified index
+	5. trim() Trimming the string- removing the trailing and leading spaces=
+	6. split() splits the string using delimiter and returns array
+package firstjavaproject.strings;
+
+public class StringIntern {
+
+	public static void main(String[] args) {
+		String s1 = "abc";
+		String s2  = "abc";
+		System.out.println(s1==s2);//true
+		
+		String s3 = new String("abc");
+		System.out.println(s1==s3);//false
+		
+		//appling the intern() method
+		s3=s3.intern();
+		System.out.println(s1==s3);
+		
+
+	}
+
+}
+package firstjavaproject.strings;
+
+public class StringMethodDemo {
+	public static void main(String[] args) {
+		String email = "avinash@gmail.com";
+		//indexOf() method: returns the index of the first occurance of the specified character
+		System.out.println(email.indexOf('s'));
+		
+		//substring() method: used to extract the part of the string
+		System.out.println(email.substring(0, 7));//
+		System.out.println(email.substring(4, 5));
+		
+		String userName = email.substring(0,email.indexOf('@'));
+		System.out.println("USERNAME: "+userName);
+		
+		//charAt() method: used to extract character at the specified index
+		System.out.println(email.charAt(3));
+	}
+}
+
+	
+package firstjavaproject.strings;
+
+public class StringReverse {
+
+	public static void main(String[] args) {
+		String input = "java";
+		
+		//toCharArray()
+		char[] inputArray = input.toCharArray();
+		for(char i: inputArray) {
+			System.out.print(i+"\t");
+		}
+		System.out.println("\n===========Reverse String============");
+		//to reverse the string
+		for(int i=inputArray.length-1;i>=0;i--) {
+			System.out.print(inputArray[i]+"\t");
+		}
+		System.out.println("\n=====Upper and Lower======");
+		System.out.println(input.toUpperCase());
+		System.out.println(input.toLowerCase());
+		System.out.println("=Trimming the string- removing the trailing and leading spaces=");
+		String s = "     Hyderabad     ";
+		System.out.println(s.trim());
+		System.out.println("\n=====startsWith======");
+		String greeting = "Hello World";
+		// startsWith() it returns boolean value true if the string starts with the specified string
+		// in the startswith() method 
+		
+		System.out.println(greeting.startsWith("Hello"));
+		//length() method 
+		System.out.println(greeting.length());
+		//Split() method
+		String fruits = "Apple,Bannana,Cherry";
+		String[] strArray =fruits.split(",");// delimiter is comma (,)
+		for(String str: strArray) {
+			System.out.print(str+" ");
+		}
+		System.out.println();
+		String myStr="boo:and:foo";
+		String[] bArray=myStr.split(":");//delimiter is colon(:)
+		for(String str:bArray) {
+			System.out.print(str+" ");
+		}
+	}
+
+}
+	StringBuilder and StringBuffer:	Both are 2 classes, which supports mutablity of strings
+	-------------------------------
+	- we can create mutable(Strings can be modified) strings using StringBuilder and StringBuffer.
+	- the difference between StringBuilder and StringBuffer is that, StringBuilder is not suitable in
+		multi-threaded environment.
+		StringBuffer is suitable for multi-threaded programs
+		
+	- StringBuffer internally implements the concepts of thread syncronization which prevents multiple threads 
+		to access the synchronized data at the same time.
+		
+	- Since StringBuilder doesn't implement syncronization, it is not thread-safe 
+	- StringBuffer implements syncronization, so it is a thread-safe i.e., it is safe to use in multi-threaded environment.
+	
+	append(): add text at the end.
+	StringBuffer strBuff = new StringBuffer("Core");
+		strBuff.append("java");
+		s.o.p(strBuff);// corejava
+	insert(): insert texts at specified index
+		strBuff.insert(5,"Language");
+	replace(): replaces portion of the String
+	strBuff.replace(5,9,"Great");
+	delete(): removes a portion of the text
+	strBuff.delete(3,7);
+	reverse(): reverse the given string
+	StringBuffer str = new StringBuffer("java");
+	str.reverse(); //avaj
+	
+package firstjavaproject.strings;
+
+public class MutableString {
+
+	public static void main(String[] args) {
+		String greeting = "Hello";
+		greeting.concat("World !");// immutable
+		System.out.println(greeting);
+		
+		StringBuilder myGreeting = new StringBuilder("Hello");
+		myGreeting.append(" World!"); // mutable String
+		System.out.println(myGreeting);
+		
+		StringBuffer myGreeting1 = new StringBuffer("Hi");
+		myGreeting1.append(" How are You");
+		System.out.println(myGreeting1);
+
+	}
+
+}
+Methods in JAVA
+---------------
+	- Method in java is a block of code is used to perform a specific task
+	- Methods help to reuse the code,(helps to avoid redundancy) and to organize the code in a better way
+	- A method must be inside a class.
+	- It will be executed only when it is called(invoked).
+	- A method may or may not take input parameters
+	- A method may return or may not return a value.
+	
+	Instance methods:
+	------------------
+		- A object reference variable is required to call instance methods
+		- it belongs to the object of the class
+	Static methods:
+	---------------
+		- An object reference variable is not required to call methods
+		- we use keyword static in method declaration while creating a method
+		- it belongs to the class itself not the object
+	
+	Syntax to create a method:
+	--------------------------
+		access_modifier return_type methodName(){
+		
+		//code block
+		
+		}
+	where access_modifier can be public, private, protected or without any modifier(default)
+	return_type: A method can return a value, it can be of any type.(for eg, int String, char,..)
+				when a method doesnt return a value we use keyword called void
+				void means nothing
+	methodName: is the meaningful name of the method, its a convention to start a method
+				name with lower case letter
+			(): A method is followed by parenthesis or bracket, inside this () we provide 
+				arguments (inputs to the method) if required
+		
+	** For static methods we use static keyword before the return_type
+	
+	Method with return_type:
+		- A method with return_type(i.e.,a method without return_type) must have a return statement as last statement
+		syntax:
+	access_modifier return_type methodName(){	
+	//code block
+	return value;
+	}
+	
+package firstjavaproject.methods;
+
+public class MethodsDemo2 {
+	//a method without return type and no arguments
+	public void welcomeMessage() {
+		System.out.println("Welcome Avinash !");	 
+	}	
+	//a method without return type and no arguments
+	public static void helloWorld() {
+		System.out.println("Hello World");
+	}
+	//a method with int return type and no arguments
+	public int diplayNumber() {
+		return 25;
+	}
+	//a method with string return type and no arguments
+	public String diplayString() {
+		return "Avinash";
+	}
+	//a method without return type and with arguments
+	public static void main(String[] args) {
+		MethodsDemo2 message = new MethodsDemo2();
+		message.welcomeMessage();// Invoking or calling the instance method
+		helloWorld();// static method calling
+		int value = message.diplayNumber();
+		System.out.println(value);
+		System.out.println(message.diplayString());
+	}
+}
+
+Recursion:
+----------
+	example: 
+		public void doSomething(){
+			doSomething();
+		
+		}
+	
+	recursive method is a method which calls itself
+	base case: 
+		- base case in recursion is the case which stops the recursion process, can also 
+	call it stopping condition without a base case the recursion process will not stop and continues infinitely
+	then an exception called "StackOverFlow" exception occurs, and the program terminates abnormally/crashes
+	
+	recursive case: 
+		- The method calls itself with a modified argument eg: (n-1)
+		- eg: factorial(n)=n*factorial(n-1)
+	stack behavior in recursion:
+		- stack is a memory region(data structure) which follows the LAST IN FIRST OUT principle.
+		- each time when a method is called, this method is pushed into a stack by creating a stack frame
+			for that method.
+		- for the next method call, a new stack frame is created on top of the previous stackframe.
+        - each of these stackframes are executed in order of top to bottom i.e., the stackframe at the top is 
+            executed and removed once completed. this process continues till the method in the 1st stack frame
+            is executed.
+        - after all method calls are completed, stack gets empty and it is deleted
+		- when a method is called infinitely number of times then an exception called "StackOverFlow" exception occurs, 
+				and the program terminates abnormally/crashes
+	
+======================================================================================================================
+OOPS 
+=====
+Class: blue print for an object
+	Template for an object
+	specification to an object
+	it is a logical entity 
+Object: Instance of a class
+		objects follows the specification given by the class
+		It is a physical entity
+		
+Syntax to create a class:
+
+	class <ClassName> {
+	
+	//variables
+	//methods
+	
+	}
+
+Syntax to create an Object:
+
+
+	ClassName objRef = new ClassName(); //ClassName() is class Constructor
+	eg: Car car = new Car();
+	
+	In the above ,
+	
+	- ClassName is the class
+	- ObjRef is a variable which holds the reference(address) of the object
+	- new Keyword is used to allocate memory for the newly created object in the heap memory
+	- ClassName() is class constructor is used to initialize the class object
+	package OOPS;
+
+public class Car {
+	//instance variables
+	String engine;
+	int mileage;
+	String model;
+	double price;
+	String color;
+	
+	public static void main(String[] args) {
+		Car kia = new Car();
+		kia.engine="Diesel engine";
+		kia.mileage=14;
+		kia.model="Seltos";
+		kia.price=1500000;
+		kia.color="blue";
+		
+		System.out.println(kia.engine);
+		System.out.println(kia.mileage);
+		System.out.println(kia.model);
+		System.out.println(kia.price);
+		System.out.println(kia.color);
+		
+		Car honda = new Car();
+		honda.engine="Petrol Engine";
+		honda.mileage=12;
+		honda.model="i";
+		honda.price=1000000;
+		honda.color="white";
+		
+		System.out.println(honda.engine);
+		System.out.println(honda.mileage);
+		System.out.println(honda.model);
+		System.out.println(honda.price);
+		System.out.println(honda.color);
+	}
+}
+	
+package OOPS;
+
+public class Animal {
+	String color;
+	String size;
+	String type;
+	int walk;
+	public static void main(String[] args) {
+		Animal lion = new Animal();
+		lion.color="Yellow";
+		lion.size="Big";
+		lion.type="Carnivorus";
+		lion.walk=4;
+		System.out.println("Lion color: "+lion.color);
+		System.out.println("Lion size: "+lion.size);
+		System.out.println("Lion type: "+lion.type);
+		System.out.println("Lion walks on: "+lion.walk+" legs");
+		
+		Animal rabbit = new Animal();
+		rabbit.color="Brown";
+		rabbit.size="medium";
+		rabbit.type="Herbivorous";
+		rabbit.walk=4;
+		System.out.println("Rabbit color: "+rabbit.color);
+		System.out.println("Rabbit size: "+rabbit.size);
+		System.out.println("Rabbit type: "+rabbit.type);
+		System.out.println("Rabbit walks on: "+rabbit.walk+" legs");
+		
+		Animal human = new Animal();
+		human.color="fair,black,brown";
+		human.size="medium";
+		human.type="Omnivore";
+		human.walk=2;
+		System.out.println("Humans color: "+human.color);
+		System.out.println("Humans size: "+human.size);
+		System.out.println("Humans type: "+human.type);
+		System.out.println("Humans walks on: "+human.walk+" legs");
+		
+	}
+}
+	
+	
+Constructor:
+	- constructor is used to initialize the class object
+	- Constructor can be created either with arguments or without arguments.
+	
+	Constructor without arguments:
+	- A constructor without any arguments is called no-argument constructor
+	- It can also be a default constructor for a class
+	- The default constructor is available for every class when it is created
+	- Default constructor will initiate the object with default values as follows:
+	
+		For Primitives:
+		
+		dataType         default value
+		---------         -------------
+		int--------------------> 0
+		double-----------------> 0.0
+		float------------------> 0.0
+		short					0
+		long					0
+		char
+		boolean					false
+
+		For Non primitives:
+		String-----------------> null
+
+constructor:	
+parameterized constructor:
+	Syntax:
+		accessModifier constructor(param_type1 parameter1, param_type2 parameter2,....){
+			//statements
+		}
+
+	in the above, 
+	access modifier can be public private, protected or default (without any modifier)
+	constructor is the name of the class
+	Braces()- are used to specify the arguments for the constructor.
+	
+	A constructor will always have the same name as the className.
+	A class will always have a default constructor, even though we are not
+	explicitly creating it.
+	A parameterized constructor must be created explicitly in the class.
+	When an object is created, the code in the constructor will be executed first.
+	
+Constructor Overloading:
+	- There can be any number constructor for a class but each constructor must have a different
+	number of arguments
+	- A constructor is said to be overloaded when you create one or more constructors in a class 
+	otherthan the default constructor.
+	
+	Copy constructor:
+	- It is a constructor which is used to create exactly the same copy of already existing
+	object.
+	- A copy constructor takes another similar type of object as paramters
+	- It copies all its attributes/properties/fields to the new object.
+	- this is used to remove ambiquity for jvm used to refer to the current object.
+	
+	Eg: Student(Student otherStudent){
+		this.name=otherStudent.name;
+		this.age=otherStudent.age;
+		etc...
+	}
+	
+	Using copy constructor:
+	Student student= new Student("Ravi",23);
+	//copying of student to studentCopy
+	Student studentCopy = new Student(student);
+
+this keyword:
+	- this is a keyword in java which is used to refer the current object of a class.
+	- it is used to differentiate btw instance variables and parameters	with the same name.
+	- this keyword is also used for calling another constructor of the same class
+	- calling another constructor of the same class from a constructor is called
+		Constructor chaining
+	- constructor chaining is achieved using a this keyword with parethesis.
+	
+	
+	syntax: this() or this(parameters)
+	this() call must be first statement
+this()->call constructor without arguments
+this(parameters)-> call constructor with arguments
+call methods using this keyword this.methodName();
+
+since this keyword refers to an object/instance, it cannot be used in static methods.
+
+Polymorphism:
+------------
+	polymorphism means many forms.
+	Eg: In a class there can be constructor with same name existing in different
+		forms.
+		In a class there can be a method with same name existing in different forms.
+	
+	Overloading is an example of polymorphism.
+	A constructor is said to be overloaded if it exists multiple times with different arguments in a class
+	A method is overloaded if it exists multiple time with different arguments
+	
+Encapsulation:
+--------------
+	- Encapsulation is the principle of hiding the data by making instance variables as private and allowing the 
+	controlled access to thses variables using getter and setters.
+	
+	- Declaring the fields as private prevents the direct acces to the fields from outside the class.
+	Eg: employee.name; which is not possible
+	
+	- getter methods: these methods are also called as "accessors" as they are used tp access the data in the instance variables
+	
+	- setter methods: these methods are also called as mutators because the can be used to set/modify the data in the instance\variables.
+		these methods allow us to modify values with validations/checks.
+		
+	Using encapsulation, internal implementation of the class can be changed without affecting external code
+	Since data access is controlled, finding the errors(debugging) and testing of the code becomes easy.
+	
+	Initializer blocks in a class:
+	
+	Class loading Process:
+		1. when we create a class and compile it, .class file will be generated
+		2. JVM has to load this class using class loader on the memory
+		3. the class is instantiated once we create the object using new keyword
+		4. the created object will be instantiated by calling the constructor
+
+	Static block:	is used to execute a block of code using the class loading process
+	-------------	
+					- static initializer block
+					- belongs to a class, not to any specific object
+					- static variables can be initialized using static block
+					- we cannot access instance variables from static block
+					- runs before main method and before any objects are created.
+	 Syntax for static block:
+	 static{
+		//statements 
+	 }
+	 Instance block: it belongs to any object/instance of the class
+	 ---------------
+					- also called instance initializer block.
+					- it executes everytime an object is created before the constructor.
+					- used for common initialization tasks.
+					- can access both static and instance members.
+					- it runs each time when an object is instantiated
+					- 
+	 syntax:
+	 
+	 {
+		//statements
+	 }

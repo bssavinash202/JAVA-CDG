@@ -1,0 +1,161 @@
+Class: blue print for an object
+	Template for an object
+	specification to an object
+	it is a logical entity 
+Object: Instance of a class
+		objects follows the specification given by the class
+		It is a physical entity
+		
+Syntax to create a class:
+
+	class <ClassName> {
+	
+	//variables
+	//methods
+	
+	}
+
+Syntax to create an Object:
+
+
+	ClassName objRef = new ClassName(); //ClassName() is class Constructor
+	eg: Car car = new Car();
+	
+	In the above ,
+	
+	- ClassName is the class
+	- ObjRef is a variable which holds the reference(address) of the object
+	- new Keyword is used to allocate memory for the newly created object in the heap memory
+	- ClassName() is class constructor is used to initialize the class object
+	package OOPS;
+
+public class Car {
+	//instance variables
+	String engine;
+	int mileage;
+	String model;
+	double price;
+	String color;
+	
+	public static void main(String[] args) {
+		Car kia = new Car();
+		kia.engine="Diesel engine";
+		kia.mileage=14;
+		kia.model="Seltos";
+		kia.price=1500000;
+		kia.color="blue";
+		
+		System.out.println(kia.engine);
+		System.out.println(kia.mileage);
+		System.out.println(kia.model);
+		System.out.println(kia.price);
+		System.out.println(kia.color);
+		
+		Car honda = new Car();
+		honda.engine="Petrol Engine";
+		honda.mileage=12;
+		honda.model="i";
+		honda.price=1000000;
+		honda.color="white";
+		
+		System.out.println(honda.engine);
+		System.out.println(honda.mileage);
+		System.out.println(honda.model);
+		System.out.println(honda.price);
+		System.out.println(honda.color);
+	}
+}
+	
+	package OOPS;
+
+public class Animal {
+	String color;
+	String size;
+	String type;
+	int walk;
+	public static void main(String[] args) {
+		Animal lion = new Animal();
+		lion.color="Yellow";
+		lion.size="Big";
+		lion.type="Carnivorus";
+		lion.walk=4;
+		System.out.println("Lion color: "+lion.color);
+		System.out.println("Lion size: "+lion.size);
+		System.out.println("Lion type: "+lion.type);
+		System.out.println("Lion walks on: "+lion.walk+" legs");
+		
+		Animal rabbit = new Animal();
+		rabbit.color="Brown";
+		rabbit.size="medium";
+		rabbit.type="Herbivorous";
+		rabbit.walk=4;
+		System.out.println("Rabbit color: "+rabbit.color);
+		System.out.println("Rabbit size: "+rabbit.size);
+		System.out.println("Rabbit type: "+rabbit.type);
+		System.out.println("Rabbit walks on: "+rabbit.walk+" legs");
+		
+		Animal human = new Animal();
+		human.color="fair,black,brown";
+		human.size="medium";
+		human.type="Omnivore";
+		human.walk=2;
+		System.out.println("Humans color: "+human.color);
+		System.out.println("Humans size: "+human.size);
+		System.out.println("Humans type: "+human.type);
+		System.out.println("Humans walks on: "+human.walk+" legs");
+		
+	}
+}
+	
+	
+Constructor:
+	- constructor is used to initialize the class object
+	- Constructor can be created either with arguments or without arguments.
+	
+	Constructor without arguments:
+	- A constructor without any arguments is called no-argument constructor
+	- It can also be a default constructor for a class
+	- The default constructor is available for every class when it is created
+	- Default constructor will initiate the object with default values as follows:
+	
+	For Primitives:
+	
+	dataType         default value
+	---------         -------------
+	int--------------------> 0
+	double-----------------> 0.0
+	float------------------> 0.0
+	short					
+	long
+	char
+	boolean	
+
+	For Non primitives:
+	String-----------------> null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+	 

@@ -10,7 +10,7 @@ public class AreaOfCircle {
 		float radius = sc.nextFloat();
 		double area = pi*radius*radius;
 		System.out.println("Area of a Circle is "+area+" Meters^2");
-
+		sc.close();
 	}
 
 }

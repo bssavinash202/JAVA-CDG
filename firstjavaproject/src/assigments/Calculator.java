@@ -1,4 +1,4 @@
-package firstjavaproject;
+package assigments;
 
 import java.util.Scanner;
 
