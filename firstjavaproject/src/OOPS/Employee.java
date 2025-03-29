@@ -49,7 +49,6 @@ public class Employee {
 //	 * static void test() {
 //	 * this.greet(); }
 //	 */
-	
 	Employee(String name, int age, String department){
 		this.name=name;
 		this.age=age;

@@ -1153,7 +1153,7 @@ Encapsulation:
 	- Declaring the fields as private prevents the direct acces to the fields from outside the class.
 	Eg: employee.name; which is not possible
 	
-	- getter methods: these methods are also called as "accessors" as they are used tp access the data in the instance variables
+	- getter methods: these methods are also called as "accessors" as they are used to access the data in the instance variables
 	
 	- setter methods: these methods are also called as mutators because the can be used to set/modify the data in the instance\variables.
 		these methods allow us to modify values with validations/checks.
@@ -1186,10 +1186,368 @@ Encapsulation:
 					- it executes everytime an object is created before the constructor.
 					- used for common initialization tasks.
 					- can access both static and instance members.
-					- it runs each time when an object is instantiated
-					- 
+					- it runs each time when an object is instantiated.
 	 syntax:
 	 
 	 {
 		//statements
 	 }
+	 
+	 public is an access modifier -  which allows a method to be access from anywhere
+	 static is keyword when applied to a method, the method is accessible
+		without object reference. it can be accessed directly with classname also
+	void - when a method doesnt return anything then we use a keyword void to say that the methods doesnt return anything
+	
+	main() its the name of the method
+	String[] - Array of Strings or string array
+	args - arguments variable name of the String array
+	
+	we can pass arguments to the string array as follows
+	
+	java className arg1 arg2 arg3 ... argn
+	
+	System.out.println();
+	
+-System is a final 
+
+Inheritance:
+------------
+
+- Inheritance is one of the core principle of oop's.
+- Inheritance allows one class to inherit properties and behaviour from another class.
+- Inheritance helps to reuse the code.
+- Inheritance helps to establish the relationship between classes.
+- we use keyword called extends.
+
+
+-The class from which another class inherits the properties is generally called parent class or base class or super class.
+- The class which inherits the properties form another class is known as child class or derived class or subclass.
+
+	parent - child
+	base - derived
+	super - subclass
+Syntax:
+
+class parent{
+}
+class child extends parent{}
+the keyword is used tro specify the relation between a child and parent.
+"extends" means inheriting
+
+
+this() vs  super():
+
+this() is used to call the constructor of the same class
+super() is used to call the constructor of the super class
+
+Both this() and super() must be first statement in the constructor.
+we cannot use this() and super() in the same constructor. If we use together it will result to compilation error.
+
+Rules for method overloading and method overriding:
+------------------------------------------------------
+method overloading: - Two or more methods having same name but with different parameters.(different number of params,different types,different order).
+                    - Overloading can have any return type, return does not matter in the method Overloading.
+					- Methods must present in the same class.
+					- static methods can also be repeated.
+					- constructors can also be overloaded.
+Method overloading is a example of static method dispatch or static polymorphism.
+Methods are resolved during the compile time. So, it is also called as compile time polymorphism.
+
+
+Method Overriding: - Same method name , same parameter list, same return type.
+                   - Return type can also be covariant return type.
+				   - when a method in a parent class is overridden in child class, the overidden method in child class
+						can have the same return type as parent class method or it can have a covariant return type.
+				   - covariant return type is a type which is subclass to the parent class methods return type.
+				   - static methods cannot be overridden, if a same static method is implemented again in the child class it is not 
+				     called method overriding, it is called as method hiding.
+				   - private methods cannot be overridden.
+				   - constructors cannot be overridden.
+				   - 'final' method cannot be overridden.
+				   - Method overriding is an example for dynamic  method dispatch. or dynamic polymorphism.
+				     methods are resolved during the runtime. So, it is also called as runtime polymorphism.
+					
+					
+	 - access modifiers: 
+	--------------------
+			public - public is an access modifier which allows access from anywhere.
+				   - public can be accessed anywhere within the package or outside the package.
+							package is group of related classes
+						eg: inbuilt packages:
+							java.io;
+							java.util.*;
+							java.lang.*;
+			no modifier: a method or a variable or a class can be declared without any access modifier.
+							- such modifiers are generally called default modifiers. 
+							- such methods are also called as package-level modifier.
+							- methods/class/variables declared without modifier can be accessed only inside the classes 
+							present in the same package.
+								
+					
+Final keyword:
+--------------
+- final keyword can be used with a class , with a method, and with a variable.
+final keyword with respect to a class:
+-  When a final keyword is used in the class declaration, the class cannot be inherit
+   we cannot have child classes  for final classes.
+   Eg: final class employee{}
+   
+final keyword with respect to Method:
+ - we can use final keyword in a method declaration.
+ - when a method is declared as final method, it cannot be overridden in the child classes.
+ eg:public final void doSomething(){
+	 statements
+ }
+
+final keyword with respect to variable:
+ - we can use final keyword in a variable declaration
+ - when a variable is declared as final, it cannot be reassigned.
+ eg: public final double PI = 3.14;
+ - final keyword for variable is generally used to specify the constant values.
+ 
+ 
+ 
+ Relationship between classes:
+ 
+ a. association : When one class is association with another class is called association.
+ b. composition : Composition is a special type of association, also known as "HAS-A"
+ for eg: if we 
+ 
+class Car{
+	HAS-A Relation
+	Engine engine;
+}
+
+class Engien{
+
+}
+		Access Modifiers:
+		================
+
+							same Class			same package			Another package
+							----------			------------			---------------
+			public			available			available				available
+			
+			private			available			not available			not available
+			
+			no modifier 	available			available				not available
+			
+			protected		available			available				not available (available only when this class is 
+																						subclass of class in another package)
+			
+	access restriction levels:
+	-------------------------
+	public < protected < no accessModifier < private
+	
+	parent class modifier				allowed access modifier for overridden method in subclass
+	---------------------				---------------------------------------------------------
+	private											not accessible at all, cannot be overidden
+	
+	no access modifier								no modifier, protected, public
+	
+	protected										protected, public
+	
+	public											only public
+	
+abstract method: it is a method with only declaration, it will not have implementation(body)
+					terminated with a semicolon
+
+concrete method: are methods which have declaration as well as implementation (body).
+					implementation is provided inside the curly {} braces.
+	
+	package OOPS.inheritence;
+
+public class AbstractDemo {
+	//concrete
+	public void method1() {
+		System.out.println("abstract method");
+	}
+	// concrete // class allows only concrete methods
+	public void method2() {
+		
+	}
+	// we cannot abstract methods in a normal class interface only allows abstract methods
+//	public void method3();
+}
+
+package OOPS.inheritence;
+
+public interface AbstractDemo {
+	//concrete
+//	public void method1() {
+//		System.out.println("abstract method");
+//	}
+//	// concrete // class allows only concrete methods
+//	public void method2() {
+		
+	//}
+	// we cannot abstract methods in a normal class interface only allows abstract methods
+	public void method3();
+}
+
+Interfaces: 
+	- interfaces will not have concrete methods.
+	- interface can have abstract methods.
+	- interface can also have variable declaration.
+	- interface methods are terminated with semi colon(;)
+	- class is a specification to an object.
+	- interface is a specification to a class.
+	- to used an interface in a class, we have to implement(provide) the body to all the methods of an interface.
+	
+	syntax to create an interface:
+	
+	interface <interface_Name> {
+		
+		// variable declaration
+		// abstract methods declaration
+		
+	}
+	
+	- 'interface' is the keyword used to create an interface
+	- interface_Name is the name of the interface
+	
+package OOPS.inheritence;
+
+interface College {
+	// default method allowed from java 8 onwards
+	default void myMethod() {
+		
+	}
+	//static method from java 8 onwards
+	static void myMethod2() {
+		
+	}
+}
+
+Abstract classes:
+=================
+			- abstract classes in  java allows both abstract methods and concrete methods.
+			- abstract classes cannot be instantiated.
+			- abstract classes need to be extended by subclass.
+			- abstract classes can have constructors.
+			- abstract classes 
+
+Abstraction:
+------------
+		- abstract and interfaces:
+	
+	when to use:
+	Abstract classes can be used in the following situations:
+		- theyare generally used when you have closely related subclasses(child classes).
+		- you can use abstract classes when you want to declare non-static or non-final fields
+		- you can use abstract classes when the child classes have many common methods or fields
+		
+	Interfaces can be used in the following situations:
+		- they are generally used when you have unrelated subclasses(no common behavior)
+		- You can use interface when you just want to specify the behavior(method) of a particular type, but not concerned about who
+			implements its behavior.
+		
+	Diamond Problem:
+	
+		   Class X				valid
+		   method1()
+		
+		/			\
+	
+	class A			class B		both are valid
+	method1()		method1()
+	
+		\			/
+	
+			class C				invalid
+			method1()
+			
+	Diamond Problem:
+		- it generally occurs in multiple inheritence, where a class inherits from 2 classes which inherit from
+			a common super class.
+			- this creates ambiquity because compiler cannot determine which version of the inherited method to use.
+			- in the above example class A and Class B are inheriting from a common class class X
+			Class C is trying to inherit from class A and class B at the same time, so compiler cannot understand 
+			which method1(class A's method1() or class B's method1()) to inherit.
+			- this is called ambiquity.
+			- java avoids this kind of situation by only allowing a single class to extended.
+			- so we can say that java avoids multiple inheritence for classes.
+			
+			- In other words, we can say a class cannot extends more that a single class.
+			example: class C extends A,B --> Invalid.
+					 class C extends A --> valid.
+					 class C extends B --> valid.
+
+	mutli-level inheritence:
+	-----------------------
+			Class X				valid
+		   method1()
+		
+		/			\
+	
+	class A			class B		both are valid
+	method1()		method1()
+	
+		\			
+	
+			class C				valid
+	
+	Interfaces extension:
+	--------------------
+	
+	Interface A											interface C{
+		|	implements -->valid								method3();
+	Class A												}
+	  
+	Class A implements A{
+	}
+	  
+	interface A
+	method1()
+		|		extends --> valid
+	interface B
+	method2() + method1()
+	
+	interface B extends A{
+		
+	}
+	
+class A implements B,C{
+	method1(){
+	}
+	method2(){
+	}
+	method3(){
+	}
+}
+
+Variables:
+----------
+	Static variables: 
+		- static variables belong to the class.
+		- static variables will have a single copy in memory, which is shared by all the objects.
+		- static variables are declared using static keyword.
+		- declared inside a class, but outside the method.
+		- static variables can be accessed using classname(eg: classname.variableName)
+											using object reference
+		- static variables will have default values if they are not initialized explicitly.
+		
+	Instance variables:
+		- instance belong to instance of a class.
+		- each object will have a separate copy of instance variables.
+		- instance variables can be accessed directly in instance method.
+		- instance variables cannot be accessed directly in static methods,
+		- we can access instance variables with the help of object reference
+			eg: myObjRef.age;
+		
+	Local variables:
+		- which are created inside a method of a class
+		- variables inside a constructor, variables inside a block of code.
+		- local variables are created when the method/block executes and destroyed after it ends.
+		
+ Exceptions in java:
+ 
+	- when a program abnormally terminates due to an exceptional/abnormal situation,
+		we call that situation an exception.
+		
+	- An abnormal situation which disturbs the normal flow of execution of the program is known as exception.
+	
+	- Eg: Dividing an integer with zero.
+		java doesn't allow dividing with a zero, it results in abnormal situation and the program will terminate.
+	
+	

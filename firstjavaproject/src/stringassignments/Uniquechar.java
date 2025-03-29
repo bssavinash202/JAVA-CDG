@@ -20,7 +20,7 @@ public class Uniquechar {
 	    public static void main(String[] args) {
 	        String s = "javajavajavadevdevdev";
 	        String result = printUniqueCharacters(s);
-	        System.out.println("Expected Output: " + result);
+	        System.out.println("Unique characters are: " + result);
 	    }
 
 }
