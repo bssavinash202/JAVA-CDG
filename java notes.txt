@@ -1520,14 +1520,14 @@ Variables:
 ----------
 	Static variables: 
 		- static variables belong to the class.
-		- static variables will have a single copy in memory, which is shared by all the objects.
+		- static variables will have a single copy in memory, which is shared by all the objects.	
 		- static variables are declared using static keyword.
 		- declared inside a class, but outside the method.
 		- static variables can be accessed using classname(eg: classname.variableName)
 											using object reference
 		- static variables will have default values if they are not initialized explicitly.
 		
-	Instance variables:
+	Instance variables:	
 		- instance belong to instance of a class.
 		- each object will have a separate copy of instance variables.
 		- instance variables can be accessed directly in instance method.
@@ -1550,4 +1550,48 @@ Variables:
 	- Eg: Dividing an integer with zero.
 		java doesn't allow dividing with a zero, it results in abnormal situation and the program will terminate.
 	
+This exceptional/abnormal situation can be handled in java prg using a mechanism called exception
+handling.
+
+	Exceptions can be broadly categorized into 2 types:
+		1. runtime Exceptions:
+		Eg: ArrayIndexOutOfBoundException, ArithmeticException
+			- Also known as unchecked exceptions
+			- runtime exceptions are the subclasses of runtimeexception class.
+			- runtime exc cannot be seen during compile time
+			- they are only visible when we execute
+			- exception need not be handled during the compilation time
+			- they are called unchecked as they are not checked by compiler.
+			- It is always a good practice to handle unchecked exception also.
+			
+		2. Compile Time Exceptions:
+		Eg:  IOException, SQLException etc.
+			- Also known as checked exceptions
+			- Checked exceptions are the classes which are not the subclasses of runTime Exceptions
+			- Compile Time exceptions are visible during the compile time itself
+			- the program will not compile unless we handle the exception.
+			- they are called checked exceptions as they are checked by the compiler.
+
+Handling an exception: An exception can be handled using a special block called 'try' block followed by 'catch' block
+Syntax:
+	try{
+		
+		//exception causing code or risky code
+	}
+	catch(Exceptionclass ref){
+		//exception handling code
+	}
 	
+Eg:       int val1=100; 
+		  int val2 = 0; 
+		  try { 
+		  System.out.println("main method executing...");
+			  int q=val1/val2;//abnormal situation exception causing statement
+			  System.out.println(q); 
+		   } 
+		  catch(Exception err)
+		  { 
+			  err.printStackTrace();
+			  System.out.println(err); 
+		  } 
+		   System.out.println("After division");
