@@ -1595,3 +1595,105 @@ Eg:       int val1=100;
 			  System.out.println(err); 
 		  } 
 		   System.out.println("After division");
+		   
+		   
+	finally block:
+	-------------
+		- it is used to execute a lock of code regardless of an exception in the try block.
+		
+		- if you need a block of code to be executed even if there is an exception in the try block, then we keep such code inside the finally block.
+		
+		- a try block can have a multiple catch blocks
+		- when we have multiple catch blocks, the order of the catch block is important 
+		- the parent exception must always be at the bottom of the child exception.
+		
+		
+		- a try block can exists without a catch block also, but it must be followed with a finally block when there is no catch block.
+		
+	throws key word:
+	----------------
+		- the throws keyword in java is used to declare exceptions that a method might throw during its execution.
+		- it informs the caller of the method that it must handle or propagate the exception.
+		
+		syntax of throws:
+		
+		return_type methodName() throws Exception_type_1, Exception_type_2{
+			//method logic that cause exception
+		}
+		
+		- if a method contains the code that might throw a checked exception, it must either handle it using try-catch or declare it using
+			a throws keyword.
+			
+		- unchecked exception like ArithmeticException or NullPointerException dont require declaration,
+			but still the exception is propagated to the caller method.
+
+
+UNCHECKED EXCEPTION HANDLING:
+==========================
+package ExceptionHandling;
+
+public class Test {
+	public void method1() throws ArithmeticException {
+		System.out.println("In method1()");
+		int result = 10 / 0;
+	}
+
+	public void method2() {
+		System.out.println("In method2()");
+		try {
+			method1();
+		}catch(ArithmeticException e){
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("prg started..");
+		Test t = new Test();
+		t.method2();
+		System.out.println("prg ended..");
+	}
+}
+CHECKED EXCEPTION HANDLING:
+==========================
+package ExceptionHandling;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Test2 {
+	public void method1() throws IOException {
+		System.out.println("In method1()");
+		FileReader file = new FileReader("abc.txt");
+	}
+
+	public void method2() {
+		System.out.println("In method2()");
+		try {
+			method1();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("prg started..");
+		Test2 t = new Test2();
+		t.method2();
+		System.out.println("prg ended..");
+	}
+}
+
+Exception propagation ==> using throws keyword ==> exception thrown to the caller method where we have to handle exception.
+=====================
+
+	Exception propagation refers to how exceptions move thorugh the call stack/runtime_stack when they are not handled in the method where they occur
+	
+	- main thread:
+		when a java program starts up, one thread begins running immediately, this is usually called main thread of our program.
+			- A thread refers to a sequence of instructions.
+			- for every thread, JVM will create a separate stack at the time of thread creation.
+			- All method calls performed by that thread will be in that stack.
+			- Each entry in the stack is called 'Stack frame' or 'Activation record'.
+			- After completing every method call, JVM removes the corresponding entry from the stack.
+			- After completing all method calls, JVM destroy the empty stack and terminates the program normally.
