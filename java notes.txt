@@ -1697,3 +1697,105 @@ Exception propagation ==> using throws keyword ==> exception thrown to the calle
 			- Each entry in the stack is called 'Stack frame' or 'Activation record'.
 			- After completing every method call, JVM removes the corresponding entry from the stack.
 			- After completing all method calls, JVM destroy the empty stack and terminates the program normally.
+	
+	Incase of an exception:
+		- if an exception is raised inside any method, the JRE will create exception object with following info:
+			- Name of the exception, description, location of the exception.
+			- location of the exception is also known as stacktrace.
+		- JVM checks whether the method contains any exception handling code or not.
+		- if the method doesnt have exception handling code, jvm terminate the method abnormally and removes the corresponding
+			entry(stackframe) from the stack.
+		- jvm will identify the caller method and checks whether there is any exception handling code in the caller method or not.
+			if the caller method also doesnt have any exception handling code, JVM terminates caller method, and it checks the caller of this
+			method for exception handling code.
+		- Finally main method will also be checked , if main() method doesnt have any exception handling code, JVM removes main() also from stack and
+			stack is destroyed
+	
+	- JVM will handover the responsiblity of the exception handling to "default exception handler".
+	- Default Exception handler just prints the exception information to the console.
+	
+package ExceptionHandling;
+
+public class Test3 {
+	public void doMoreStuff(){
+		System.out.println("Do more Stuff method called..!");
+		int result = 10 / 0;
+		System.out.println("Do more stuff method completed..!");
+	}
+
+	public void doStuff() {
+		System.out.println("do Stuff method called..!");
+
+		doMoreStuff();
+
+		System.out.println("Do stuff method completed..!");
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Main method called..!");
+		Test3 t = new Test3();
+		t.doStuff();
+		System.out.println("Main method completed..!");
+	}
+}
+	
+Main method called..!
+do Stuff method called..!
+Do more Stuff method called..!
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at ExceptionHandling.Test3.doMoreStuff(Test3.java:6)
+	at ExceptionHandling.Test3.doStuff(Test3.java:13)
+	at ExceptionHandling.Test3.main(Test3.java:21)
+	
+
+package ExceptionHandling;
+
+public class Test3 {
+	public void doMoreStuff() throws Exception {
+		System.out.println("Do more Stuff method called..!");
+		int result = 10 / 0;
+		System.out.println("Do more stuff method completed..!");
+	}
+
+	public void doStuff() throws Exception {
+		System.out.println("do Stuff method called..!");
+
+		doMoreStuff();
+
+		System.out.println("Do stuff method completed..!");
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Main method called..!");
+		Test3 t = new Test3();
+		try {
+			t.doStuff();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Main method completed..!");
+	}
+}
+
+Main method called..!
+do Stuff method called..!
+Do more Stuff method called..!
+java.lang.ArithmeticException: / by zero
+	at ExceptionHandling.Test3.doMoreStuff(Test3.java:6)
+	at ExceptionHandling.Test3.doStuff(Test3.java:13)
+	at ExceptionHandling.Test3.main(Test3.java:22)
+Main method completed..!
+
+
+	Custom Exceptions:
+	------------------	A custom exception is a user-defined exception class.
+		It extends either:
+		- Exception class (or), generally extended to create checked exceptions.
+		- RuntimeException - extended to create runtimeexception.
+	Custom exceptions are useful when builtin exceptions do not fit.
+	for a specific requirement.
+	
+	Steps to create a custom exception:
+	
+	- extend Exception or RuntimeException
+	- provide a constructor that accepts error messages.
