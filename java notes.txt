@@ -1799,3 +1799,85 @@ Main method completed..!
 	
 	- extend Exception or RuntimeException
 	- provide a constructor that accepts error messages.
+	
+	-throw  keyword is used to explicitly throw the exception from  a method or a block of code.
+  synatx:
+  throw new ExceptionType("Error message");
+  -throw is used manually throw'/raise an exception
+  -It must be followed by an instance of the class that inherits from the throwable(like Exception or RunTimeException)
+  
+  Difference between throws and throw :
+  ------------------------------------
+  1. throws keyword is used in method  declaration to declare that the method throw an exception.
+     throw keyword is used throw an exception.
+ 2.  throws is used in method signature 
+     throw  is uded inside a method  or a block 
+  3. We can use throws with one or more Exception class names.
+     throw is used with single instance of Exception class.
+ 
+Union catch blocks:
+-------------------
+-To reduce the boiler plate code,java 7 introduced Union catch blocks
+-They allow us to treat multiple exceptions in the same manner and handle their exceptions in  a single block.
+Syntax:
+try{
+ //somecode
+  }catch(Exception1 | Exception2 ex){
+    //handle
+    }
+ Various methods to print exception information:
+1.printstackTrace(): This method prints exception information in the following format
+                   Name of the  Exception: description of exception
+                   stacktrace(location of the exception)
+2.getMessage():  This method returns only the description part of the exception information.
+
+3. tostring(): This method prints exception information in the format:
+               Name of the Exception: description of the exception	
+ 
+ --------------------------------------------------------------------------------------------------
+ Thread:
+ -Thread is an executional path or sequence in a program.
+ -a thread is a unit of execution which allows concurrent execution of multiple parts in a program
+ -By default every program is run by JVM,
+  JVM will create a default thread called 'main' thread.
+  main thread is not as same as main method  .
+  by default main thread is used by jvm to run the program.\
+  
+  Multitasking means doing multiple things at the same time
+  
+  Process is an independent program in execution .
+  -Each process is managed by Operating system.
+  -Each process will have a thread called main thread by default.
+  -A thread is a smallest unit of execution with in a process.
+  
+  steps:
+  1.OS will create Process
+  2.An instance of JVM will be created by OS
+     (Main thread -created by JVM)
+  3.Other threads:Created by  our code
+  4.Stack:Each thread will have its own stack
+  
+  Thread.sleep(ms);
+  
+  - Thread.sleep(long milliseconds);
+  - pause the current thread for specified milliseconds of time.
+  - it temporarily stops the execution, allowing other threads to run.
+  eg: Thread.sleep(1000) -> will pause the thread for 1000ms or 1 second.
+  
+  InterruptedException:
+  - sleep() method throws a checked exception called 'InterruptedException'
+  - so it must be handled by try/catch block
+  - it may occur due to the following scenarios:
+	- when a thread is sleep using Thread.sleep(), another thread interrupts it by calling Thread.interrupt();
+  - Thread is in waiting stage.
+  - when the thread is blocked in join()
+  
+  Thread Priorities:
+  ------------------
+	- Every java thread has a priority assigned btw 1 to 10.
+	- if you do not set any priority to a thread, the default priority would be 5.
+	
+		constant					value			Description
+		Thread.MIN_PRIORITY			1				Lowest priority- thread get least CPU Time.
+		Thread.NORM_PRIORITY		5				Default priority for all threads.
+		Thread.MAX_PRIORITY			10				Highest priority - may get more preference by Thread scheduler
