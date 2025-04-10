@@ -1841,7 +1841,7 @@ try{
  -By default every program is run by JVM,
   JVM will create a default thread called 'main' thread.
   main thread is not as same as main method  .
-  by default main thread is used by jvm to run the program.\
+  by default main thread is used by jvm to run the program.
   
   Multitasking means doing multiple things at the same time
   
@@ -1881,3 +1881,40 @@ try{
 		Thread.MIN_PRIORITY			1				Lowest priority- thread get least CPU Time.
 		Thread.NORM_PRIORITY		5				Default priority for all threads.
 		Thread.MAX_PRIORITY			10				Highest priority - may get more preference by Thread scheduler
+		
+	Thread Creation:
+	---------------		- A thread can be created by extending thread class
+						- A thread can also be created by implementing runnable interface.
+						
+	Runnable interface: 
+		- Runnable interface in java.lang package.
+		- Its afunctional interface, meaning, it has a single abstract method.
+		- it has a single abstract method called run()
+		
+		Steps to create a Thread using runnable interface.
+		1. create a class that implements Runnable interface.
+		2. Override run() method, in the run method provide the functionality of the thread.
+		3. TO use the runnable Thread, Create an object of runnable class(A class which implements Runnable)
+		4. pass the object reference to a Thread class constructor.
+		5. call the start() to start the runnable Thread.
+		
+	join(): It is used to pause the execution of the current thread.(Main Thread) until the thread on which it is called has finished executing.
+		
+		Syntax:	public void join() throws InterruptedException
+				public void join(long milliseconds) throws InterruptedException
+				
+	- join() ensures the one threas completed before another thread starts.
+	- It is generally used when one thread depends on the other.
+	- Helps in sequential execution with in a multithreaded program.
+	
+	eg: Thread t1 = new Thread(new MyTask());
+	
+		t1.start();
+		try{
+			t1.join();
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+		
+		In the above, the main thread will pause at t1.join()
+		main thread will continue only after t1 finishes.
