@@ -8,6 +8,6 @@ public class DepositThread extends Thread {
 	}
 
 	public void run() {
-		account.deposit(80);
+		account.deposit(26);
 	}
 }

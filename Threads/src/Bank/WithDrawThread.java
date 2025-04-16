@@ -6,7 +6,7 @@ public class WithDrawThread extends Thread {
 	WithDrawThread(BankAccount account) {
 		this.account = account;
 	}
-	
+
 	public void run() {
 		account.withDraw(30);
 	}

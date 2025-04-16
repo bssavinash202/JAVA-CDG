@@ -12,14 +12,12 @@ public class BankTest {
 		try {
 			deposit.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		withdraw.start();
 		try {
 			withdraw.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

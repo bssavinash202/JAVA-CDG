@@ -1918,3 +1918,142 @@ try{
 		
 		In the above, the main thread will pause at t1.join()
 		main thread will continue only after t1 finishes.
+		
+Synchronized Keyword:
+-------------------
+  -sysnchronized can be applied on methods and block
+  synchronized{
+  
+  //code block
+  }
+  or
+  
+  public synchronized void methodname(){
+  
+  }
+  
+   Purpose of synchronization
+   
+  -To prevent multiple threads from accessing shared resources at the same time.
+  -This is to avoid data inconsistency.
+  -when synchronized keyword is applied to a method or block only one thread at a  time can execute 
+   a synchronized block/method on the same object.
+  -When a thread enters a synchronized block or method,it acquires lock on the object.
+   Other threads which try to enter synchronized code on the same object will be blocked until lock is released.
+  -Locking mechanism prevents multiple threads from accessing a shared resource at same time.
+  -These locks are also called Monitors.
+  
+  wait(),notify(),notifyAll();
+  ----------------------------
+  -The above are the methods which belong to Object class.
+  -They do not belong to Thread class.
+  -These methods are used for inter-thread commmunication
+  
+  wait():
+  -wait() method cause the current thread to wait until another thread calls notify().
+  
+  notify():
+  -notify() method is used for waking up the waiting thread.
+  
+  notifyAll():Wakes up all waiting threads .
+  
+  -These methods must be called from synchronized context.
+  -Whenever a thread calls a wait(),it releases the lock and goes into a waiting state.
+  -when notify() is called,one waiting thread is  awakened.
+  -the awakened thread which was earlier in waiting state,it needs to require the lock to continueits execution.
+  
+  
+  example flow of cofeemachine-
+  Custom Thread:
+  Staff Thread:
+  
+  1.Customer Thread is used to call makecoffee() method.
+    from cofffeeMachine class.
+  2.Staff Thread is used for calling fillwater() method of CoffeMachine class.
+  3. when the  customer thread calls makeCoffe(),it will check whether water is filled filled or not.
+  4.If no water it will just call wait() method,it release  the lock and goes into waiting state.
+  5. So until now, the customer thread is holding the lock on coffeeMachine object.
+     As soon as it calls wait() method , it release the  lock on coffeeMachine object.
+  6. Next staff thread will new acqurie the lock on the object.
+	It will call fillwater() method on the object.
+    And then it calls notify().
+    Staff thread releases the lock on coffeeMachine object.
+  7. Customer Thread which is in waiting state, will now awakedned.
+    It will re-acqurie the lock  and continue
+	
+  Thread states:
+  ---------------
+  A thread  will eneter into different states during its lifecycle.
+  6 stages of Thread:
+  
+  1.New State or Born State :
+   A thread is created,but not start.
+   eg: Thread t=newThread();//new state
+   
+  2.Runnable state:
+   -The thread is ready to run,but CPU may not be executing it yet.
+   -Thread goes to runnable stae when you call start() method.
+   
+  3.Blocked State:
+    The thread is said to be blocked state ,
+    when the thread is waiting to acquire a lock(another thread is hold in the lock)
+    -Thread is  generally  in blockstate when two or more threads try to enter a
+      synchronized block on the same object
+    
+  4.Waiting state :
+  -Thread is said to be in waiting state when the thread is waiting continously for another 
+   thread to perform an action.
+   -A thread can eneter to waiting state by calling
+     -wait()
+     -join()
+     
+  5.Time waited state:
+  -A thread is said to be in timewaited state,the Thread is waiting,but only for a limited time.
+  -a thread enters to waiting state by calling
+    -sleep(ms)
+     -wait(ms)
+     -join(ms)
+     
+  6.Terminated or Dead state:
+  -Thread is said to enter a Terminated state or DeadState  when the thread has finished execution or it is 
+   abnormally stopped.
+  -Generally when run() is completed or an Exception is thrown during its execution the Thread enters into Terminated
+    or Dead state.
+    \
+    NEW->RUNNABLE->BLOCKED/WAIT/TIME-WAITED<--->RUNNABLE->TERMINATED
+	
+=========================================================================================================================================	
+IO STREAMS:
+==========
+Stream: Sequence of characters or sequence of bytes.
+IO Stream: Input/Out stream
+					read						     write
+		source ===============> java application =============> Destination
+				inputStream						  outputStream
+		
+	- Input Stream: Reads data from the source./ The characters or bytes that a java application READs is called Input stream.
+	- Output Stream: Writes data to a destination./The characters or bytes that a java application WRITEs is called Output Stream.
+	
+	-I/O Streams are used for storing small amount of data like application settings in a file or for storing log information.
+	
+	- All classes relates to IOStreams for handling filoes are present in package java.io package.
+	-so to use these IO stream classes we need to import java.io package.
+	
+- Streams are characterized into 2 types:
+	a. Character streams:Classes related to Character Streams are generally used to read and write character data or text data.
+	b. Byte Streams: Byte Stream classes are used to read and write binary data,
+						ex: java objects, images, audio and video files etc.
+	
+	
+	java.io.Reader --> it is an abstract class for reading characters.
+		
+		Child classes
+		- FileReader
+		- BufferedReader
+		
+	
+	java.io.Writer --> it is an abstract class for writing characters.
+	
+		Child classes
+		- FileWriter
+		- BufferedWriter
