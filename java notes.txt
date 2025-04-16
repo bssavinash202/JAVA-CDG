@@ -2057,3 +2057,21 @@ IO Stream: Input/Out stream
 		Child classes
 		- FileWriter
 		- BufferedWriter
+	
+	java.io.File Class:
+		- file class is used to create files and directories.
+		- we pass the name of file or directory in the file class constructor.
+		- createNewFile() method will create a new file. It throws a checked exception - IOException, which must be handled
+		- exists() method returns true, if the file exists, if file doesn't exist , it returns false.
+		
+	File class constructors:
+	
+		constructor1:
+		File fileRef = new File("name of the file");
+		
+		constructor2:
+		File fileRef = new File(File f,String filename);
+		
+		constructor3:
+		File fileRef = new File(String subdir,String filename);
+		
