@@ -2070,8 +2070,42 @@ IO Stream: Input/Out stream
 		File fileRef = new File("name of the file");
 		
 		constructor2:
-		File fileRef = new File(File f,String filename);
+		File fileRef = new File(File f,String filename);2
 		
 		constructor3:
 		File fileRef = new File(String subdir,String filename);
 		
+		
+		
+	Methods of fileclass:
+	
+	exists(): returns true if file/directory exists else returns false.
+	mkDir(): creates a new directory.
+	createNewFile(): creates a new file
+	isFile(): check whether the resource is a file or not. returns boolean true if it is a file, else false.
+	isDirectory(): check whether the resource is a directory or not. returns boolean true if it is a directory, else false.
+	list(): returns a String array, this Array will have the names of the files and subdirectories present in the directory.
+	
+	
+FileWriter class: 
+		- it is present in java.io package
+		- it is a concrete class used to write character data to files.
+		- it extends OuputStreamWriter class, which in turn extends the abstracr class 'Writer'.
+		
+	FileWriter Constructor:
+	- FileWriter fw = new FileWriter(String filename);
+	- Eg: FileWriter fw2 = new FileWriter("myFile.txt")
+	
+	constructor2:
+	File fileObjRef = new File("fileName");
+	FileWriter fw = new FileWriter(fileObjRef);
+	
+Method of a FileWriter class:
+	- write(int char) - writes a single character.
+	- write(char[] ch) - writes a character array
+	- write(String str) - writes a string
+	- flush() - ensures all data is pushed from buffer to file.
+	- close() - closes the stream.
+	
+FileReader:
+	- it is a concrete class used to read character data to files.
