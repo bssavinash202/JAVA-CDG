@@ -2088,6 +2088,7 @@ IO Stream: Input/Out stream
 	
 	
 FileWriter class: 
+-----------------
 		- it is present in java.io package
 		- it is a concrete class used to write character data to files.
 		- it extends OuputStreamWriter class, which in turn extends the abstracr class 'Writer'.
@@ -2108,4 +2109,28 @@ Method of a FileWriter class:
 	- close() - closes the stream.
 	
 FileReader:
+----------
 	- it is a concrete class used to read character data to files.
+	read()==> method is used to read, it returns only ascii values in numbers
+	
+BufferedReader and BufferedWriter:
+---------------------------------
+	- BufferedWriter and BufferedReader classes internally uses a concept called buffering.
+	- buffering is the process of temporarily storing data in memory (RAM), 
+		before it is actually read or written to a file or Stream.
+	
+	- BufferedReader
+		- used to read text from a file efficiently.
+		- reads the data in chunks into a memory buffer.
+		- supports line-by-line reading using readLine() method.
+		- since it is not directly reading from the disk, it is much faster.
+		- improves the performance when working with large files.
+		
+	- BufferedWriter:
+		- used to write character data to a file.
+		- Buffers the data in java memory before writing to a file.
+		- Reduces writing to a disk frequently as it uses a buffer.
+		- it provides a newLine() method for seperating() a line.
+		
+	BufferedReader and BufferedWriter are faster than FileReader and FileWriter.
+	

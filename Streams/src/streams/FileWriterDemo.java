@@ -24,13 +24,6 @@ public class FileWriterDemo {
 			char[] vowels = {'a','e','i','o','u'};
 			fw.write("\n");
 			fw.write(vowels);
-			
-			
-			
-			
-			
-			
-			
 			fw.flush();
 			
 			
