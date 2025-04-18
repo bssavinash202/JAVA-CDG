@@ -2134,3 +2134,31 @@ BufferedReader and BufferedWriter:
 		
 	BufferedReader and BufferedWriter are faster than FileReader and FileWriter.
 	
+	PrintWriter class:
+	------------------
+		- Most efficient class in java for writing the text data to a file.
+		- unlike FileWriter or BufferedWriter, PrintWriter directly writes any data type, int,boolean etc.,
+		- we can write data directly ino a file or  through another writer like FileWriter or BufferedWriter.
+		
+	constructors:
+		- PrintWriter pw = new PrintWriter(String Filename);
+		eg: PrintWriter pw = new PrintWriter("output.txt");
+		
+		- PrintWriter pw = new PrintWriter(File file);
+		eg: PrintWriter pw = new PrintWriter(new File("ouput.txt"));
+		
+		- PrintWriter pw = new PrintWriter(Writer writer);
+		eg: PrintWriter pw = new PrintWriter(new FileWriter("ouput.txt"));
+		
+Serialization and Deserialization:
+---------------------------------
+	- this is also called importing and exporting an object.
+	- the state of a java object can be exported to a file, memory or database.
+	for eg: when you create a student object, this object remains in the memory as long as you are using in program.
+	- once you exit the program, the object is cleanedup in the memory.
+	- to save the object in a file system or a database or a memory even when tou exit the program, we can use bytestream classes.
+	- to save the state of the object, first the object must be converted into a bytestream.
+	- the process of converting a object to a bytestream is called serialization.
+	- the converted bytestream can be saved as a file, or sent over a network.
+	- the bytestream can be saved as a file with .ser extension
+	- this file is platform independent
