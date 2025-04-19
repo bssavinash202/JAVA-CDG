@@ -10,7 +10,7 @@ public class PrintWriterDemo {
 		try {
 			PrintWriter out = new PrintWriter(new FileWriter("sample.txt"));
 			out.write(100);//writes corresponding ascii values
-			out.println(100);//prints 100
+			out.println(500);//prints 100
 			out.println(true);
 			out.println("Hello");
 			out.println('A');
@@ -20,8 +20,7 @@ public class PrintWriterDemo {
 			e.printStackTrace();
 		}
 	}
-	
 	public static void main(String[] args) {
-		writeData_PrintWriter();1
+		writeData_PrintWriter();
 	}
 }
