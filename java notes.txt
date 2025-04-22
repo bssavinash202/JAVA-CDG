@@ -2178,4 +2178,99 @@ Try with resources:
 		closed to avoid resource leakages.(wasteage of memory)
 	5. it is introduced in JAVA 7, as a part of automatic resource management or ARM.
 	
+Serialization can be performed only for serializable objects.
+- An Object is said to be serializable if and only if the class implements serializable interface
+- Serializable interface is present in java.io package
+- It doesnot contain any methods.
+
+An interface which doesnot have any methods is called marker interface.
+- Serializable interface is a marker interface.
+- When a class implements serializable interface, it is eligible for Serialization process,
+	(JVM will mark that class as the class eligible for serialization)
+- if we try to serialize a non-serializable object, i.e., a class which doesnot implement serializable interface,
+	then we get a RunTimeException: "NotSerializableException".
+	
+transient modifier: When a field is declared with transient modifier, the field will not take part in serialization
+------------------
+process.
+EG: private transient String password;
+	Here, password will not be saved during serialization
+	After deserialization, its value is null.
+	
+Object Casting:
+--------------
+	- Object casting is the process of converting one type of object reference to another type.
+	- Object casting happens btw parent nad child classes.
+
+	There are 2 types of casting:
+	1. Upcasting:
+		- Also known as widening casting
+		- when a child class object is assigned to a parent class reference.
+		
+		Syntax:
+			Parent p = new Child();
+		- it is done automatically, so it is also called as implicit casting.
+		- upcasting can access only the parent class methods or variables
+		- overridden methods in the child class will be called due to runtime polymorphism.
+	2. Down Casting:
+		- Also known as Narrowing or Explicit object casting.
+		- Downcasting happens when a parent class reference is converted back to child class refernce.
+		
+		Syntax:	Parent pRef = new Child();
+				Child cRef = (Child) pRef;//down casting
+		- it must be done explicitly.
+		- Down casting must be done only if the object is actually an instance of child class.
+		- it is dangerous if bot used carefully, it can cause ClassCastException at runTime.
+		
+		- it is always a best practice to use the keyword 'instanceof' before downcasting.
+		
+		syntax of instanceof:
+			if(object instanceof ClassName){
+				//stats.
+			}
+			- instanceof is used to check the actual type of an object at runtime.
+			- prevents ClassCastException.
+			- it returns true if the object is instance of class.
+			- it is commonly used before downcasting to avoid errors.
+			
+	Wrapper class:
+	In java primitive data types like int,char,double, etc are not objects, they are primitive types.
+	
+	- but java is object oriented language and many features like collections work only with objects.
+	- so we need  wrapper classes to wrap primitive types to objects.
+	
+	Different Wrapper classed:
+		Primitive Type 							Wrapper Class
+		
+			byte									Byte
+			short									Short
+			int										Integer
+			long									Long
+			float									Float
+			double									Double
+			char									Character
+			boolean									Boolean
+			
+	Autoboxing: 
+	- the automatic conversion of a primitive type to an object type.
+	- It is introduced in JAVA 5.
+	- Autoboxing happens when:
+		- we assign a primitive type to a wrapper object.
+		- when we pass a primitive type to a method excepting a wrapper object.
+		- when we add a primitive to a collection (eg. ArrayList)
+		eg: int i = 10;
+		Integer x = i;
+		
+	Unboxing:
+	- Automatic converison of wrapper class object to primitive type.
+	- also introduced in JAVA 5.
+	- unboxing happens when:
+		- you assign a wrapper object to a primitive.
+		eg: Integer x = 50;
+		int y = x;
+	
+	
+	
+		
+	
 	

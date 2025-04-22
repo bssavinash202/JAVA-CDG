@@ -39,7 +39,7 @@ public class SerializationDemo {
 	}
 
 	public static void main(String[] args) {
-		Student student = new Student("Avinash", 25);
+		Student student = new Student("Avinash", 25, "Superman@202");
 		// serialize
 		serialization(student);
 		// deserialize
