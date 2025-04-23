@@ -2270,6 +2270,18 @@ Object Casting:
 		int y = x;
 	
 	
+Generics:
+	- Generics allows us to write resusable code by parameterizing types.
+	- We use a place holder instead of specig=fying a type.
+	syntax:
+		class ClassName <T>{
+			//code
+		}
+	In the above syntax we use angle brackets <> to define generic type.
+	- Generics will help us to achieve type safety by making sure that only the expected type of objects are added.
+	- Type safety will make sure that variables are only assigned values of the expected data type.
+	- It prevents type mismatch errors at compile time itself rather than at runtime.
+	- without type safety, assigning an incorrect data type to a variable can cause RunTimeException called 'ClassCastException'.
 	
 		
 	
