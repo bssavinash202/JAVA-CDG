@@ -2272,7 +2272,7 @@ Object Casting:
 	
 Generics:
 	- Generics allows us to write resusable code by parameterizing types.
-	- We use a place holder instead of specig=fying a type.
+	- We use a place holder instead of specifying a type.
 	syntax:
 		class ClassName <T>{
 			//code
@@ -2282,6 +2282,133 @@ Generics:
 	- Type safety will make sure that variables are only assigned values of the expected data type.
 	- It prevents type mismatch errors at compile time itself rather than at runtime.
 	- without type safety, assigning an incorrect data type to a variable can cause RunTimeException called 'ClassCastException'.
+	
+
+Package in java - java.util
+
+Collections Framework:
+
+  - It is architecture for representing and manipulating collection of object.
+  - Collections Framework will have the following:
+        - Interface
+		- implementations
+		- Algorithms (Methods)
+  - These classes , interfaces and abstract classes are present in java.util package.
+  
+Collections Framework:
+   - privdes predefined classes and interfaces for common data structures.
+   - It makes code reusable and efficient.
+
+
+java.util.Collection Interface:
+------------------------------
+  - Base interface for many classes in collections framework
+  - It is present in java.util package.
+     add()
+	 addAll()
+	 contains()
+	 remove()
+	 removeAll()
+
+- Names of countries:
+
+List - Allows duplicates
+  India
+  Japan
+  singapore
+  Malaysia
+  India
+  
+ java.util.List interface:
+ ------------------------
+ - extends Collection interface
+ - Allows duplicates
+ - allows ordered elements
+ - Elements are index based
+ - common classes - ArrayList, LinkedList, Vector, Stack
+ 
+ 
+ ArrayList:
+ ==========
+ - It is an implementation class of list interface.
+ - elements are stored in contigious memory location.
+ - It is based on resizable or growable array.
+ - Heterogeneous object can be stored in a ArrayList
+ - Duplicates are allowed
+ - Insertion order is preserved.
+ - default capacity of ArrayList is 10.
+ - if we have frequent insertions and deletion operations in the collection, then ArrayList is not agood option.
+ - During insertions or deletions, arrayList has to shift the elements for inserting a new object or to delete an object from ArrayList.
+ - Due to this there may be an overhead for the application performance when there are huge number of objects in an arrayList.
+ - But arrayList is best option for search operations as it internally implements an interface called 'RandomAccess' Interface.
+ - less memory overhead.
+ - it internally coverss the object into a String representation as it overrides toString() method.
+ LinkedList:
+ ==========
+  - LinkedList implements List interface.
+  - elements are stored in contigious memory location.
+  - It is based on doubly linked List.
+  - Duplicates are  allowed
+  - Nulls are allowed.
+  - Heterogeneous objects are allowed.
+  - Insertion order is preserved.
+  - when ever insertion and deletion occur, only the links will be changed internally. No shifting of the elements.
+  - Due to this, it is better choice to use linked list when you have frequent insertions and deletions.
+  - LinkedList occupies more memory as it internally maintains extra pointers in node.
+  - it internally coverss the object into a String representation as it overrides toString() method.
+  
+ Vector:
+ ======
+ - Similar to ArrayList, it is growable array.
+ - duplicates are allowed.
+ - insertion order is preserved
+ - heterogenous objects are allowed.
+ - Nulls are allowed.
+ - Vectors are thread safe because all these methods are synchronized.
+ - it is slower than ArrayList, as it has synchronization overhead.
+ 
+ Stack:
+ ======
+ - extends vector class
+ - it inherits the synchronization properties of vector.
+ - stack is based on last in fast out principle.
+ - the element added at the end of the list will be removed first.
+ 
+Set - Which does not allows duplicates
+  2000
+  100
+  22
+  500
+ 
+  
+  
+ java.util.Set interface:
+ -----------------------
+ - extends Collection interface
+ - Does not allow duplicates
+ - Unordered collection
+ - common classes - HashSet, LinkedHashSet, TreeSet
+ 
+
+Map - Which does not allows duplicates
+  Key       Value
+  India     New Delhi
+  US        WashingtonDC
+  Japan     Tokyo
+  
+ java.util.Map interface:
+ ------------------------
+ - does not extends Collection interface
+ - Stores Objects in Key-Values pairs
+ - No duplicate Keys, but values can repeat
+ - It does not extend Collection
+ - Common classes which implement Map interface:
+      - HashMap, LinkedHashMap, TreeMap etc...
+	  
+	  
+ java.util.Queue:
+ ----------------
+ - Based on First In First Out - FIFO
 	
 		
 	
