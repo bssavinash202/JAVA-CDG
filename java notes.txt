@@ -2373,7 +2373,48 @@ List - Allows duplicates
  - it inherits the synchronization properties of vector.
  - stack is based on last in fast out principle.
  - the element added at the end of the list will be removed first.
+ - Stack is an implementation of List interface.
+ - it extends vector class.
+ - Stack is synchronized by default (thread-safe).
+ - It is also a legacy class, but also used for stack operations.
  
+ Methods of Stack:
+ - push(Object o) -> add elements to stack
+ - pop() -> remove elements from the top of stack, returns the element at the top of the stack.
+ - peek() -> it is used to lookup the element at the top of the stack.
+ 
+ 
+
+---------------------------------------------
+Cursors: It is a pointer or interface it allows us to traverse/navigate through
+elements of a collection one by one.
+- Java provides 3 types of cursors:
+	1. Enumeration
+	2. Iterator
+	3. ListIterator
+ - Enumeration: 
+	- it is used only with legacy classes like vector, stack, hashtable.
+	- It can only read the elements. it cannot remove the elements.
+	- It is not universal cursor as it only works with legacy classes.
+	
+	- To get an Enumeration object we use elements() method of vector class.
+	eg: Enumeration enumeration = Vector.elements();
+	- hasMoreElements() -> true if elements are present.
+	- nextElement() -> will retrieve the next element from collection.
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
 Set - Which does not allows duplicates
   2000
   100
