@@ -2419,16 +2419,59 @@ Set - Which does not allows duplicates
   2000
   100
   22
-  500
- 
-  
-  
+  500  
  java.util.Set interface:
  -----------------------
  - extends Collection interface
  - Does not allow duplicates
  - Unordered collection
  - common classes - HashSet, LinkedHashSet, TreeSet
+Set Interface:
+=============	Set interface extends collection interface.
+Set will not allow duplicate.
+Some implementations of Set interface are:
+	1. HashSet
+	-----------
+	- HashSet is an implementation class of Set interface.
+	- No Duplicates are allowed.
+	- Insertion order is not guaranteed.
+	- It allows null value.
+	
+	- Hashing is the process of mapping data to fixed size integer called hashcode.
+	- Internally hash() function is used to generate hashcode.
+	- The hash() function takes an input like a String or Number and returns a unique code for that input.
+	
+Advantages of hashing:
+	- Fast data retrieval using hashcode.
+	- Efficient for insertion and deletion operations.
+	
+HashSet internally uses HashMap:
+Eg:   Key		 value		(HashMap)
+	1234567		Hyderabad	
+	2345678		Chennai		
+
+Reason for not maintaining the insertion order in hashset:
+a. the position of elements in hashset is not consecutive memory location.
+b. Elements position in the memory is determined by using hashvalue. It is not by order of insertion.
+
+	2. LinkedHashSet:
+	-----------------
+	- It is an implementation of Set interface.
+	- It internally uses LinkedHashMap.
+	- LinkedHashMap internally uses hashing + LinkedList.
+	- It is slightly slower than HashSet because, it maintains a Linkedlist to preserve the order of elements.
+	- It consumes more memory as it uses linkedlist to maintain insertion order.
+	- Use LinkedHashSet when you need the insertion of the elements. 
+		If insertion order is not required, then use HashSet is much faster.
+		
+	
+	
+	
+	
+	
+	
+
+	3. TreeSet
  
 
 Map - Which does not allows duplicates
