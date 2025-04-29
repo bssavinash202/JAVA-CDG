@@ -2464,14 +2464,42 @@ b. Elements position in the memory is determined by using hashvalue. It is not b
 	- Use LinkedHashSet when you need the insertion of the elements. 
 		If insertion order is not required, then use HashSet is much faster.
 		
-	
-	
-	
-	
-	
-	
-
 	3. TreeSet
+	
+Sorting of elements in a collection:
+====================================	
+	Sorting: Rearranging the positions of elements in a collection(ArrayList, HashSet etc..,) in such a way,
+			that all of its elements are in ascending order or desending order for 
+			numerics and alphabetical or reverse alphabetical order or text data.
+	Collections.sort(): Collections class:
+					It is part of java.util package.
+					It is utility class that provides some static methods to operate on or to return collections.
+					Collection interface is different from Collections class.
+					
+					Methods of Collections class:
+					- sort(): It sorts a list in natural sorting order.
+					- shuff(): shuffles elements in some random order.
+					- reverse(): reverses the order of element.
+					- search: searches a sorted list.
+					- min()/max(): finds smallest/largest elements.
+					- synchronizedList():
+						- Eg: ArrayList is not a synchronized collection by default, i.e., its not thread-safe.
+						- To make it thread safe we can use synchronizedList() method of Collection class.
+						- eg: 
+						List<String> normalList = new ArrayList<>();
+						List<String> synchronizedList = Collections.synchronizedList(normalList);
+					similar methods for synchronize set and map collections:
+						- Collections.synchronizedSet()
+						- Collections.synchronizedMap()
+	java.util.Arrays:
+	================
+	- Arrays is a utility class that contains static methods to work with arrays.
+	- some common methods of Array class include:
+	- sort()
+	- fill()
+	- equals()
+	- toString()
+	- copyOf()
  
 
 Map - Which does not allows duplicates

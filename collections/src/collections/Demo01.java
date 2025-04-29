@@ -9,6 +9,7 @@ public class Demo01 {
 		Employee emp2 = new Employee(101, "Avinash", 30000);
 		Employee emp3 = new Employee(102, "Prince", 40000);
 
+		@SuppressWarnings("unused")
 		Employee[] empArray = { emp1, emp2, emp3 };
 
 		ArrayList<Employee> empList = new ArrayList<>();
