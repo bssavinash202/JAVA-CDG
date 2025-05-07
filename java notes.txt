@@ -2522,6 +2522,451 @@ Map - Which does not allows duplicates
  ----------------
  - Based on First In First Out - FIFO
 	
+=============================================================
+Set - Which does not allows duplicates
+  2000
+  100
+  22
+  500
+ java.util.Set interface:
+ -----------------------
+ - extends Collection interface
+ - Does not allow duplicates
+ - Unordered collection
+ - common classes - HashSet, LinkedHashSet, TreeSet
+ 
+ Set Interface:
+=============	
+Set interface extends collection interface.
+Set will not allow duplicate.
+Some implementations of Set interface are:
+	1. HashSet
+	-----------
+	- HashSet is an implementation class of Set interface.
+	- No Duplicates are allowed.
+	- Insertion order is not guaranteed.
+	- It allows null value.
+	
+	- Hashing is the process of mapping data to fixed size integer called hashcode.
+	- Internally hash() function is used to generate hashcode.
+	- The hash() function takes an input like a String or Number and returns a unique code for that input.
+	
+Advantages of hashing:
+	- Fast data retrieval using hashcode.
+	- Efficient for insertion and deletion operations.
+	
+HashSet internally uses HashMap:
+Eg:   Key		 value		(HashMap)
+	1234567		Hyderabad	
+	2345678		Chennai		
+
+Reason for not maintaining the insertion order in hashset:
+a. the position of elements in hashset is not consecutive memory location.
+b. Elements position in the memory is determined by using hashvalue. It is not by order of insertion.
+
+	2. LinkedHashSet:
+	-----------------
+	- It is an implementation of Set interface.
+	- It internally uses LinkedHashMap.
+	- LinkedHashMap internally uses hashing + LinkedList.
+	- It is slightly slower than HashSet because, it maintains a Linkedlist to preserve the order of elements.
+	- It consumes more memory as it uses linkedlist to maintain insertion order.
+	- Use LinkedHashSet when you need the insertion of the elements. 
+		If insertion order is not required, then use HashSet is much faster.
 		
+		
+		
+Sorting Of Elements In A Collection:
+------------------------------------
+  - sorting:
+    - Rearranging the positions of elements of a collection(ArrayList, HashSet etc....) in such a way, that all of its elements are either in 
+	  ascending order or descending order for numerics and alphabetical or reverse alphabetical order for text data.
+	  
+ - Collections.sort():
+ Collections class:
+ - It is part of java.util package
+ - It is a utility class that provides some static methods to operate on or to return Collections.
+ - Collection interface is different from Collections class.
+ 
+ Methods of Collections class:
+   - sort() : It Sorts a list in default natural sorting order.
+   - shuffle() : shuffles the elements in some random order.
+   - reverse() : reverses the order of elements.
+   - search : searches a sorted list.
+   - min()/max() : finds smallest/largest elements.
+   
+   - synchronizedList():
+       - ArrayList is not a synchronized collection by default, i.e its not thread-safe.
+	   - To make it thread-safe we can use synchronizedList() method of Collections class.
+        eg:
+            List<String> normalList = new ArrayList<>();
+            List<String> synchronizedList = Collections.synchronizedList(normalList);
+
+        Similar methods to synchronize set and map collections:
+        - Collections.synchronizedSet()
+        - Collections.synchronizedMap()		
+ 
+ java.util.Arrays:
+ =================
+  - Arrays is a utility class that contains static methods to work with arrays.
+  - Some common methods of Arrays class include:
+     - sort()
+	 - fill()
+	 - equals()
+	 - toString()
+	 - copyOf()
+	 
+	 
+Comparable interface:
+---------------------
+  - comparable is an interface for comparing an object with other objects of the same type.
+  - This is called class's natural ordering. 
+  - By default a user defined class is not comparable
+    i.e objects cannot be sorted or compared.
+  - To make an object comparable, a class must implement comparable interface.
+  - By default String and other wrapper classes implement comparable interface.
+  - So the elements of String and other wrapper classes are automatically sorted when they are passed to collections.sort() method.
+  
+  Comparable interface has a single abstract method called compareTo() method.
+  Syntax:
+     int compareTo(T o);
+	 
+	 Return Values:
+	 -------------
+	 - Negative integer (-1) : If this object(s1) is less that the argument object(s2).
+	 - Zero(0) : If both the object are equal.
+	 -Positive integer (1) : If this object(s2) is greater that the argument object(s1).
+	 
+  Comparator interface in Java:
+  
+  - comparator interface is used to define custom order for objects.
+  - we can provide multiple sorting for an object eg: either by studentId or studentname or studentmarks.
+  - Comparator interface will not be implemented in a class directly.
+  - we need to create seperate class for comparator and this class must implement comparator interface.
+     eg: NameComparator implements comparator<Student>
+  - Comparator interface in present in java.util package, it is a functional interface, meaning, it has only a single abstract method
+         - int compare(T o1 , T o2);
+		 
+		 this method returns int;
+		 return values:
+		 - Negative integer (-1) : If this object(s1) is less that the argument object(s2).
+	     - Zero(0) : If both the object are equal.
+	     -Positive integer (1) : If this object(s2) is greater that the argument object(s1).
+  - Where ever you want to sort the objects , you have to use Collections.sort(Collection, Comparator);
+      eg: Collections.sort(studentList, new IdComparator());
+	  
+	  
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TreeSet:
+  - implements NavigableSet(I)
+    - NavigableSet interface extends SortedSet interface
+	- In TreeSet Elements are sorted in ascending
+	- No duplicates
+	- will not allow null elements
+	- When a comparator is used to sort elements using TreeSet for user defined objects like Employee or Student,
+	  the comparator object must be passed to the TreeSet constructor, when the TreeSet object is created.
+	  
+	Ex:
+	  TreeSet set = new TreeSet(new NameComparator());
+	  
+===========================================================================================================================================================================
+ 
+Map - Which does not allows duplicates
+ - Map will not extends collection interface unlike other interfaces like List, Set or Queue.
+ - Map is defined in java.util package
+ - stores the object in the form of key-value pairs
+ - Keys must be unique, values can be duplicated.
+ - Only one null key is allowed.
+ - Allow multiple nulls in value.
+ 
+ Common methods of Map interface
+ 
+ - To add elements in a Map
+    put(K key, V value);
+	where key and value are the objects.
+	
+ - To retrieve the elements from map:
+    get(Object key) : returns the value for the given keyin the argument.
+	remove(Object key) : returns the entry for the given key.
+	containskey(Object key) : check if the key exists
+	
+	HashMap is an implementation of Map interface.
+	
+	Entry : An object which represents Single key - value pair in a map.
+	       - Entry is an interface which is inside Map interface.
+		   - It is also known as inner interface of map interface.
+		   
+	EntrySet : An Set object which represents a set of entries in a map.
+	          entrySet() method returns a set object which will have all the key-value pairs in the map.
+	KeySet() method : returns a Set view of all keys present in the map.
+	Values() : returns a view of all the values present in the map.
+	
+	
+	
+  Key       Value
+  India     New Delhi
+  US        WashingtonDC
+  Japan     Tokyo
+  
+ java.util.Map interface:
+ ------------------------
+ - does not extends Collection interface
+ - Stores Objects in Key-Values pairs
+ - No duplicate Keys, but values can repeat
+ - It does not extend Collection
+ - Common classes which implement Map interface:
+      - HashMap, LinkedHashMap, TreeMap etc...
+	  
+====================================================================================================================================================================
+
+HashMap vs LinkedHashMap vs TreeMap
+ 
+ 1.Order:
+ -------
+ 
+ HashMap will not gaurentee the order of keys or values
+ LinkedHashMap will maintain insertion order of keys
+ TreeMap sorts the keys in natural order
+ 
+ 2.Performance:
+ 
+ HashMap is faster for insertion/search/delete operation
+ Slightly slower than HashMap as it has to preserve insertion order by using links.
+ TreeMap is slower than HashMap and LinkedHashMap as it has to sort the keys of the elements in the Map
+ 
+ 3.Null
+ 
+ HashMap allows one Null key and multiple Null values.
+ LinkesHashMap also  allows one Null key and multiple Null values.
+ TreeMap does not allow null keys,but it allows multiple Null values.
+ 
+ 4.Usecase
+ 
+ HashMap is Best general purpose key-value storage where order is not important.
+ LinkedHashMap is used when you want predictable insertion order
+ Use TreeMap when you need the entries of a Map in a sorted order.For Userdefined objects we have to sort by implenting comparator.
+ 
+==========================================================================================================================================================
+    
+ java.util.Queue:
+ ----------------
+ -Based on First In First Out -FIFO
+ -common classes:
+ PriorityQueue,ArrayDeque,LinkedList   
+ 
+ ---------------------------------------------------------------------------------------------------
+ Queue:
+ -----
+ -Queue is part of collections framework.
+ Queue is called Linear Data Structure  which follows first in fist out.(FIFO) principle.
+ It is declared as an interface :java.util.Queue
+ 
+ Important methods of Queue:
+ 
+ -add() - inserts elements,throws exception if full.
+           eg.The implementation
+           classed like ArrayBlockingQueue,LinkedBlockingqueue can have a fixed size.
+           classes like LinkedList,ArrayDeque ,PriorityQueue -no fixed  they grow dynamically.
+           
+ -offer()-inserting elements returns false if full
+ -remove() -removes the head of the queue
+ -poll()- removes head ,returns null if empty
+ -element- retrieves head,throws exception if any
+ -peek - retrieves head
+    
+  PriorityQueue:
+  -In a priorityqueue,priority refers to the order 
+  
+  
+  -Elements are removed based on the importance or rank
+  
+  By default:
+  -default priority is based on natural order.
+  -smallest number get high priority
+  -Alphabetical order for Strings.
+  -Again the priority can be customized using Comparator.
+  -Null values cannot be  inserted
+  
+ Deque:
+  -Deque stands for Doubled Edged Queue.
+  -It allows insertion and deletion fronm both ends -front and rear
+  -Deque interface extends Queue.
+  -Commmon implementation of Deque interface are-
+   -ArrayDeque
+   -LinkedList
+   
+   Differnt methods of Deque:
+   -To insert in the front:addFirst() or offerFirst()
+   -To insert in the rear: addLast()/offerLast()
+   -To remove from the first:removeFirst()/pollFirst()
+   -To remove from the rear:removeLast()/pollLast 
+   -To view/peek from the first:getFirst()/peekFirst()
+   -To view/peek from the last:getLast()/peekLast()
+   
+   -A Deque (Double-Ended Queue) can act as:
+
+    Queue – Elements are inserted at the rear and removed from the front (FIFO behavior).
+
+    Stack – Elements are inserted and removed from the same end (usually the rear or the front) (LIFO behavior).
+======================================================================================================================================================
+
+  Java 8 enhancementes:
+
+1. java 8 interface - Default methods and static methods.
+   - Default Methods:
+     - These are the methods in interfaces that have a body.
+     - These methods will have a keyword default 
+  synatx:
+    default void methodName(){}
+  eg: default void show(){
+	  //statements
+  }	
+  
+  - It allows interfaces with new methods(default methods)
+    without breaking existing implementations(classes implementing interface)
+  - The implementation classes are not forced to override these methods.
+  
+ - Static Methods:
+    - static methods are allowed to be in interfaces from java 8 onwords.
+	synatx:
+	 static void methodName() {
+		 //statements
+	 }
+2. Functional interfaces:
+    - Functional interfaces are the interfaces which have a single abstract method.
+	- It can have any no of 'default' and ' static' methods.
+	- An interface when annotated with @FunctionalInterface annotation, then the interface will not allow you to create more than one abstract
+	  method in the interface.
+	  Eg:
+	  @FunctionalInterface
+	  interface MyInterface{
+		  // single abstract method
+		  public void abstractmethod();
+	  }
+ - 4 functional interfaces in java 8
+     - java.util.function package
+     - predicate - produces boolean result and it take one input argument.
+	 - bipredicate - produces boolean result and it take two input argument.
+        boolean test(T t);
+     - Function - takes input as a argument and returns an output
+        R apply(T t);
+     - Consumer - only consumes data, no output data sent, no result.
+       void accept(T t);
+	   interface Consumer<T>{
+		   public void accept(T t);
+	   }
+     - Supplier - No input only supplies data
+        T get();	 
+
+3. Lambda expression:
+  - A Lambda expression is a short block of code which takes in a parameters and returns a value.
+  - Lambda expressions can Only be used with functional interfaces.
+  - Functional interfaces allow functional programming in java.
+  - Functional programming is a style of programming where the focus is on functions or methods, not on objects.
+  - Functions are treated as first class citizens, meaning
+     - functions can be passed as arguments
+	 - return them from other function
+	 - or store them in a variable.
+  
+  synatx:
+  (parameters)-> expression;
+  or
+  (parameters)-> { statement };
+
+    eg:
+	public interface MyIface{
+		void doSomething(int a);
+	}
+	
+	public class MyClass{
+		public static void main(String[] args){
+			MyIface i = ()->{
+				System.out.println("Doing something");
+				System.out.println("dshdhds");
+			};
+			
+			i.doSomething();
+		}
+	}
+=============================================================================================================================================================================
+
+4. StreamsAPI:
+	- A stream is a sequence of objects which supports various methods.
+	- Using these methods, the stream produces desired results.
+	- Its introduces in Java 8.
+	- These are present in java.util.stream package
+	- Streams do not store data. they just process the objects from a source.
+	
+	Pipeline in java Streams API: a pipeline is a sequence of operations which process data.
+	- A pipeline is formed when we connect different stream operations(methods) like filter(), map(), collect() in the
+		form of a chain.
+	- A pipeline will have three parts: 
+	1. Source: Source is an object which the data comes.
+			Eg: ArrayList, HashSet etc..,
+	2. Intermediate Operations: It will help us to transform the data using methods like filter(), map(), sorted()
+		- These methods will return a stream object.
+	3. Terminal Operations:Terminal operations are final operations like collect(), forEach(), count()
+		- These operations produce a result which ends the pipeline.
+Stream:
+			 ________________________________________________________
+			|					PIPELINE							 |					
+			source ==> intermediate operations ==> terminal operations
+		eg: arrayList => filter() ==> collect()
+	Advantages of streams:
+	- will make you a more efficient java programmer.
+	- make heavy use of lambda expressions
+	- parallelStreams make it very easy to multi-thread operations.
+	
+There are different ways to create a stream:
+	stream() and of() methods are most common used ways to create a stream.
+	
+	Stream interface:
+	-----------------
+		- Stream is a generic interface present in java.util.stream package.
+		- Stream will not store data, it is like a pipeline in which the data is processed.
+		- Stream can be used with collections, arrays or with any data.
+		
+	 Lazy Operations in Streams:
+	 - Stream uses lazy evaluation-  that means, the intermediate operations will not do anything until a terminal operation is called.
+	 - the intermediate operations like filter(), map() etc. will just prepare the steps but they dont execute them yet.
+	 - lazy operations are useful to combine multiple operations efficiently.
+	 - it makes the Streams run faster.
+	 
+	 Some common methods of stream interface:
+	 Intermediate methods:
+	 -  There can be any number of intermediate operations in a Stream. These are lazily evaluated, i.e., they are evaluated
+		only when a  terminal method is called.
+	 1. filter(Predicate): selects the elements that match a condition.
+	 2. map(function): Transforms each element to another form.
+	 3. sorted() or sorted(Comparator): sorts the elements.
+	 4. distinct(): removes duplicates.
+	 5. limit(n): Keeps only first n elements.
+	 
+	 Terminal methods:
+	 There will be only one terminal operation per stream.
+	 - they are not lazily evaluated, they run the stream.
+	 - after terminal operation or a terminal method is called the stream is considered to be consumed or closed.
+	 
+	 some commonly used terminal operations or methods:
+	 1. forEach(Consumer): Performs an action on each element eg: printing
+	 2. collect(Collector): Gathers or collects the results into a collection like List, Set.
+	 3. count(): returns tyhe number of elements.
+	 4. reduce(): combines the element into a single result.
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+5. Method references
+6. forEach()
+7. Collectors class
 	
 	
