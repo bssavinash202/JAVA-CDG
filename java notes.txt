@@ -2945,18 +2945,17 @@ There are different ways to create a stream:
 	 Terminal methods:
 	 There will be only one terminal operation per stream.
 	 - they are not lazily evaluated, they run the stream.
-	 - after terminal operation or a terminal method is called the stream is considered to be consumed or closed.
+	 - after terminal operation or a terminal method is called the stream is considered to be consumed or closed.		
 	 
 	 some commonly used terminal operations or methods:
 	 1. forEach(Consumer): Performs an action on each element eg: printing
 	 2. collect(Collector): Gathers or collects the results into a collection like List, Set.
 	 3. count(): returns tyhe number of elements.
 	 4. reduce(): combines the element into a single result.
-	 
 	
-	
-	
-	
+method references in java 8:
+==================	
+
 	
 	
 	
