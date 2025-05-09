@@ -2953,18 +2953,45 @@ There are different ways to create a stream:
 	 3. count(): returns tyhe number of elements.
 	 4. reduce(): combines the element into a single result.
 	
-method references in java 8:
-==================	
-
+5. method references in java 8:
+==================
+	- Java 8 method references are shortcut from of lambda expressions for calling existing methods.
+	- They are used with functional interfaces.
+	- Sometimes, the abstract method implementation for functional interface, is already available in the existing method of your class.
+	- In such cases, method references enables us to refer functional interface method by name in place of lambda expression.
 	
+	- The method can be either static method or instance method.
+	- The specified method must have same argument and compatible return types.
 	
-	
-	
-	
-	
-	
-	
-5. Method references
+	: : - Double colon Operator:
+	------------------------------	
+			To define the method reference we have to use :: (double colon) as an Operator.
+		Types of References:
+			- Reference to a static method
+				Syntax: 
+				<Target class name> :: <Static method name>
+				Example: MethodRefDemo :: evenChecker1;
+			- Reference to instance method
+				Syntax:
+				<Target class Object> :: <instance method>
+				Example: System.out::println
+- Constructor reference:
+------------------------
+	Syntax :
+		ClassName :: new;
+		- Constructor reference provides an implementation for functional interface method whose signature matches with the constructor.
+		Example: 
+		Message class constructor:
+		public Message(String message){
+			System.out.println("message from Message Constructor: " + message);
+		}
+		Abstract method of Messageable interface:
+		public Message getMessage(String msg);
+		- In the Message constructor, a String argument 'message' is passed.
+		- The argument of the constructo matches with the argument of getMessage(String msg)
+		
+		- Java uses type reference to match the constructor with the method in the functional interface.
+		-  It doesnot require the class (eg: Message) to implement the functional interface method (getMessage).
 6. forEach()
 7. Collectors class
 	
