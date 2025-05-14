@@ -2994,5 +2994,81 @@ There are different ways to create a stream:
 		-  It doesnot require the class (eg: Message) to implement the functional interface method (getMessage).
 6. forEach()
 7. Collectors class
+===================================================================================
+Port & Socket
+ - Port is a logical connection to a computer.
+
+ - Port numbers range from 1- 65535
+
+ - Port number from 1 to 1023 are normally used for standard services.
+ - When a client tries to make connecion with any server application,it has to provide the port number of the service or application.
+
+ - The host machine, examines the port number and allows the client to connect to the corresponding service which is related to that port number
+ 
+socket:
+
+- A socket is not a physical component or its not a hardware component, but it is used to indicate one of the two end-points of a 
+communication link between two processes eg.client and server
+
+ Server socket1 ________________________________________ socket2 Client
+ (eg: port:3306) 
+
+ - when client wishes to make connection to a server, it will create a socket at its end of
+   communication link (socket2),
+
+- When server recieves the clients request on a particular port number, a new socket will be
+ created at server (socket1).
+- this link will be dedicated for the communication between server and that particular client.
+- One port may be associated with many sockets.
+
+Internet & IP-Address:
+
+- An internet is a collection of computer networks.
+
+- IP protocol(set of rules) is used for communication between networks.
+
+- "Internet" generally means worlds largest IP-based network.
+- Each computer on the Internet has a unique IP address.
+
+
+====================================================================================================================================================
+Data Movement from Sender to Receiver
+
+When a message is sent by an application (e.g., a user sends an email):
+
+1. Application Layer: The message is created and passed to the Transport Layer.
+
+2. Transport Layer (TCP):
+    - Breaks the message into segments.
+	- Adds sequence numbers (to keep order).
+	- Adds checksums (for error detection).
+	- Sends the segments to the Internet Layer.
+
+3. Internet Layer (IP):
+    - Wraps TCP segments into IP packets.
+	- Adds destination IP address for routing.
+	- Passes the packets to the Host-to-Network Layer.
+
+4. Host-to-Network Layer:
+
+Converts data into electrical/optical signals for transmission over the network.
+
+
+When the data arrives at the receiver:
+
+1. Host-to-Network Layer: Converts signals back into IP packets.
+
+2. Internet Layer (IP):
+   - Extracts the TCP segments.
+   - Checks the IP address to confirm the destination.
+   - Passes data to the Transport Layer.
+
+3. Transport Layer (TCP):
+   - Reassembles segments into the original message.
+   - Uses sequence numbers to reorder packets if necessary.
+   - If a packet is missing or corrupted, it requests a retransmission.
+   - If all packets are received correctly, it sends an acknowledgment (ACK).
+
+4. Application Layer: Receives the complete message and delivers it to the user (e.g., displaying an email)
 	
 	
