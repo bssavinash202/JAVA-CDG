@@ -3071,4 +3071,145 @@ When the data arrives at the receiver:
 
 4. Application Layer: Receives the complete message and delivers it to the user (e.g., displaying an email)
 	
-	
+	==============================================================================================
+	JDBC:
+	====
+		JDBC Driver types:
+		-------------------
+		1. Type 1 Driver: JDBC-ODBC Bridge Driver.
+			Driver classname: sun.jdbc.jdbcOdbcDriver
+		- Databases supported:P Microservice access, SQl server
+		- It requires a native library (ODBC drivers are required to install on the OS).
+		- It is not currently used since Java 8.
+		- It is considered outdated.
+		- It is platform dependent.
+		
+		2. Type 2 Driver: Native API Driver: 
+			Driver classname: oracle.jdbc.driver.OracleDriver
+		- Databases supported: Oracle database.
+		- It required native libraries to be installed.
+		- it is rarely used today.
+		- It is platform dependent, it will not work if the native library doesnot match the OS.
+		- It has a better performance than Type1.
+		
+		3. Type 3 Driver: Network protocol Driver:
+			Driver classname: com.ddtek.jdbc.mysql.MySQLDriver.
+		- Databases supported: MySQL, DB2
+		- No need for native DB Libraries.
+		- It needs a seperate middleware server which must be configured btw your application and database.	
+		- Type 3 driver is platform independent.
+		- middleware setup is complex.
+		
+		4. Type 4 Driver: Thin Driver or Pure java Driver.
+		- It is called Pure java Driver because it is completely written in java.
+		- Driver classname: com.mysql.cj.jdbc.Driver (for MySQL)
+		- Databases supported: MySQL, PostgreSQL, Oracle, SQLServer and many other databases.
+		- Native libraries are not required to be installed.
+		- This is the most commonly used driver in modern java applications.
+		- It is platform independent.
+		
+	Step to connect to database:
+		1. Register the driver:
+			Class.forName("ClassName");
+			to register or load the driver class from jar file.
+			from JDBC 4.0 onwards, explicit Class.forName("Classname") is not needed
+			- DriverManager will automatically registers the driver.
+			
+		2. Establish the connection:
+			Get the connection object from DriverManager.getConnection() method
+			getConnection() method takes 3 args:
+				a. url: Its a combination of 
+				- jdbcprotocol, eg: jdbc:mysql
+				- hostname, eg: amazon.com or 192.168.0.1 or local host
+				- port. by default mysql uses 3306 port.
+				- dbName: name of the database/schema which you want to connect
+				example of url: 'jdbc:mysql://localhost:3306/myDB'
+				b. username: username for MySQL DB server
+				c. password: password to connect to MySQL BD Server.
+				
+	DriverManager class:
+	----------------------	
+	- This class is present in java.sql package.
+	- It is used to get a connection object by calling getConnection() method.
+	- It automatically loads the JDBC Driver when the application requests a connection.
+	- To	Get the connection object from DriverManager.getConnection() method
+			getConnection() method takes 3 args:
+				a. url: Its a combination of 
+				- jdbcprotocol, eg: jdbc:mysql
+				- hostname, eg: amazon.com or 192.168.0.1 or local host
+				- port. by default mysql uses 3306 port.
+				- dbName: name of the database/schema which you want to connect
+				
+				example of url: 'jdbc:mysql://localhost:3306/myDB'
+				
+				b. username: username for MySQL DB server
+				c. password: password to connect to MySQL BD Server.
+		
+		Connection - Interface:
+		- It is used to establish connection/session between java application and database.
+		- The connection object is obtained using:
+			DriverManager.getConnection(url,username,password);
+		- It is used to create statement , PreparedStatement or CallableStatement objects.
+		- It is  responsible for opening and closing the database connection
+		- It should always be closed by calling close() or by using try with resources to prevent resource leaks.
+		
+		Example:
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/YOURDATABASE","USERNAME","PASSWORD");
+			
+		Statement:
+		-----------	
+		- It is used to execute SQL Queries.
+		- To get statement object, we use connection.createStatement() method which returns a statement object.
+		- we can execute sql using:
+			executeQuery(String sql): for select queries
+			- It returns a result set object
+		ResultSet:
+			- Its an interface in java.sql package.
+			- it represents the result of a SQL SELECT statement.
+			- ResultSet object is obtained by calling the method statement.executeQuery(String sql)
+			- It acts as a cursor which points to one row of data at a time.
+			- We can iterate through rows using next() method.
+			- It provides getter methods to retrieve data from each column of the row.
+				eg: getInt() to get integer columns like Id.
+					 getString() to get varchar column like Ename.
+					 getDouble() to get double column like Esalary.
+					
+			- columns can be accessed using:
+			column name
+			column index
+			
+			Example:
+			Employee table -> 
+			id(int)		name	(varchar)		salary(double)
+			100				Avinash				20000.50
+			
+			select*from employee;
+			
+			In the above table - 
+			id is considered as index 1.
+			name as 2
+			salary as 3.
+			
+			to get id of employee tables row:
+		We can access the column either by using the column name or by using the column index, index is not 0-based index, it is 1-based index starts with 1.
+			resultSet.getInt("id");  or resultSet.getInt(1);
+			
+			to get the name:
+			resultSet.getString(2) or resultSet.getString(name);
+			
+			executeUpdate() -  used for non-select queries like create, insert, update, delete etc.
+			---------------------
+			- It can be used with DDL commands like 
+			CREATE TABLE
+			ALTER TABLE
+			DROP TABLE
+			CREATE DATABASE
+			DROP DATABASE
+			
+			- executeUpdate(String sql), returns an int 
+			- the return type int indicates the number of rows affected by the SQL statement.
+			- DDL commands returns 0 because, they dont actually affect rows, they will only affect the structure.
+			
+			
+		
+					
