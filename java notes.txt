@@ -3228,5 +3228,36 @@ When the data arrives at the receiver:
 			getUpdateCount().
 			-execute() method is rarely used.
 			
+			
+			
+			
+			============================================================================================
+			
+			Init paramters in Servlet:
+				
+				Init parameters are the values which are configured either in web.xml or by using annotations.
+				
+				They are used for passing configuration data to:
+				- to a specific servlet --> ServletConfig
+				- to an entire web application. --> ServletContext
+				
+				ServletConfig:
+				-----------------
+					It is defined per Servlet.
+					Servlet Config object is available for each servlet.
+					Each servlet will have its own ServletConfig object.
+					This object is accessed using a method
+						getServletConfig().getInitParameter("parameterName");
+					Example usage: Specifying databasename or developer name for one servlet.
+					
+				ServletContext:
+				------------------
+					Define per whole application.
+					Accessed using getServletContext().getInitParameter("parameterName");
+					Example usage: Company name or support email. or Database or Server info.
+					
+						
+				
+			
 		
 					
