@@ -3210,6 +3210,23 @@ When the data arrives at the receiver:
 			- the return type int indicates the number of rows affected by the SQL statement.
 			- DDL commands returns 0 because, they dont actually affect rows, they will only affect the structure.
 			
+			execute() method:
+			===============
+			syntax: boolean execute(String sql)
+			- execute method can be used to execute any SQL statement.
+			- It can execute DDL as well as DML statements
+			- Its return type is boolean.
+			returns true -> if the query is of the type SELECT.
+						false -> if the query is of the type, INSERT, UPDATE or DELETE.
+				
+			- We use execute method when we dont know in advance what type of SQL opeartion
+			yow will be executing.
+			- When the query of the type SELECT, 
+			since execute() returns doesn't return a Resultset object(as it rreturns onlt true),
+				to get the ResultSet, call getResultSet() to fetch the data.
+			- when  you execute a non-select statement, to know how many rows are affected, we call the method
+			getUpdateCount().
+			-execute() method is rarely used.
 			
 		
 					
