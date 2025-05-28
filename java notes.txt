@@ -3256,8 +3256,72 @@ When the data arrives at the receiver:
 					Accessed using getServletContext().getInitParameter("parameterName");
 					Example usage: Company name or support email. or Database or Server info.
 					
-						
-				
-			
-		
 					
+					
+					
+					
+					
+					RequestDispatcher forward() method vs HttpServletResponse sendRedirect() method.
+					
+					Flow of forward():
+					--------------------
+					index.html[username, password]
+						--> LoginServlet[username, password] 
+								--> login success - store username in request attribute and server sends
+										the response to welcome Servlet using forward
+									--> WelcomeServlet will get request attribute and displays it on the browser.
+						
+					Flow of sendRedirect():
+					-------------------------
+					index.html[username, password]
+						--> LoginServlet[username, password] 
+								--> login success - store username in request attribute and server sends
+										the response to client or the browser with a 302 response.
+										--> Client(browser) creates new request object delete the old request object.
+											--> WelcomeServlet will recieves the new request object
+												- It cannot access original request data, so it displays null on the browser.
+												
+			Differences between forward() vs sendRedirect()
+			----------------------------------------------------
+			forward():
+				- It is present in RequestDispatcher,
+				- when we use forward(), request is internally forwarded by the server.
+				- Same request and response objects are used in forward()
+				- Browser URL doesnot change
+				- cannot redirect to an external domain or app
+				- Faster than sendRedirect() and there is no round trip.
+				- Generally used to pass control to another servlet, jsp or resource within the same application.
+				
+			sendRedirect():
+				- It is present in HttpServletResponse\
+				- when sendRedirect() is used, server sends http 302 status codeto the browser.
+				- browser or client makes a new request, discarding the old request.
+				- Original request attributes are lost.
+				- Browser URL will change to redirected page.
+				- sendRedirect() can redirect to external URLs (eg: google.com)
+				- It is slightly slower - as it involves network round-trip
+				- it is also useful to avoid form resubmission.
+		
+			Http status codes
+			-------------------
+			100-199 informational
+			200-299 Successful
+			300-399 Redirection
+			400-499 Client error ==> 401 Authentication Required, 404 file not found
+			500-599 Server error ==> 501 Internal server error
+			
+			HTTP request Message:
+			--------------------------
+			-> Request line: the HTTP commands
+			-> Header variables: request metadata.
+			-> Message Body: contents of message
+			
+			Components of HTTP request:
+			---------------------------------
+			Request line: includes http method GET, POST, the request URL, and the HTTP version.
+			Headers: Provides metadata such as host, Content-Type, user-agent and more,
+			Body: contains the data being sent to the server(present in methods like POST and PUT).
+			CRLF: A carriage return the line feed sequence separates the different parts of the response.
+			
+			Components of HTTP response:
+			-----------------------------------
