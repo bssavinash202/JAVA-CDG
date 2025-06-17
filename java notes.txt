@@ -3325,3 +3325,316 @@ When the data arrives at the receiver:
 			
 			Components of HTTP response:
 			-----------------------------------
+			
+			
+			HttpServletRequest            vs     HttpSession
+						request                             session
+    
+    Example scenario: Login form submits data to server
+    
+    -Data is passed to the server using one request only
+    -After the data is passed to the server,it is saved.
+    
+    Client side-what happens at the Client/browser side.
+    1.User enters username and password
+    2.Clicks on submit-POST request is sent to the server.
+    
+   Server side-what happens at server when it recieves the POST request
+   1.Server recieves the request using doPost() method in the servlet.
+   2.Server reads the input using request.getParameter("username") and request.getParameter("password")
+   3.Server stores the data using
+                        request.setAttribute("name",username)
+                        
+   4.Server forwards it to another servlet or jsp using
+     request.getRequestDispatcher("welcome").forward(request,response);
+     
+     OR
+     
+     RequestDispatcher rd=request.getRequestDispatcher("welcome");
+     rd.forward(request,response);
+  5.The next Servlet or JSP can read that value
+       request.getAttribute("name");
+       
+  6.After step 5,the request ends
+     the request and its attributes are lost.
+     a new request will not have this data.
+     
+     
+  Using HttpSession
+  -----------------
+  Client side:
+  1.User enters username and password
+  2.Submits using POST request
+  
+  Server side:
+  ----------
+  1.Server recieves the data using doPost()
+  2. Server reads the input using request.getParameter("username") and request.getParameter("password")                              
+  3.Server stores the data using:
+      a.Create session using-
+        HttpSession session =request.getSession();
+      b.store the username using
+          session.setAttribute("sessionname",username)
+  4.Server will send response with JSESSION cookie
+  
+  JSESSIONID":
+  -It is the identifier or ID for the session,
+  -It links the browser to the corrrect Httpsession on the server.
+  -Httpsession is the actual session object and JSESSIONID is the id that uniquely identifies the session.
+            request.getSession();
+  -JSESSIONID is stored in the client browser as an cookie
+  -Everytime when the requests is sent to the server, the client sends the JSESSIONID to the server to know which \
+   session is linked with this request.
+   
+   Cookie:
+   -A cookie is a small piece of data stored in the users browser by the application.
+   -It helps the server to remember information about the user between different request.
+   
+ 5.The user data is now accessed from sessions using:
+     session.getAttribute("sessioname");
+ 6.This data is available across multiple requests.
+ 7.By default the session will timeout or expires after 30 minutes,or this can be adjusted manually in web.xml or server.xml
+   we can also remove the session by calling session.invalidate()
+ 8.Even sendRedirect() method will not impact the session.
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ JSP: Java server pages:
+	renamed to jakarta server pages.
+	Jsp Scripting elements:
+		1. Declaration:
+		---------------
+		- used to declare variables and methods that can be used in JSP pages.
+		syntax:	
+				<%!
+				// declaraions 
+				%>
+		2. Scriptlet Tag:
+		----------------
+		- Scriptlet tag contains regular java code.
+		- generally used for logic like loops, conditions etc.,
+		syntax:
+			<%
+			//scriptlet
+			%>
+		3. Expression tags:
+		--------------------
+		- Used to display the result of java expression directly to the response. eg: browser
+		used to avoid out.println().
+		syntax:
+			<%=
+				// expression
+			%>
+			
+		JSP Action elements:
+		-----------------------
+		- Action elements are XML style tags used in JSP to control the behavior of the server.
+		- They provide instructions to the container to perform specific tasks.
+		
+		- Important action tags:
+			-<jsp:useBean>:
+			- useBean action tag is used to create the instance of the bean.
+			syntax:
+				<jsp:useBean id="beanID" class = "fullqualifiednameofclass" scope = "page|request|session|application">
+			
+			- <jsp:setProperty>:
+			- setProperty action tag is used to initialize the fields of the object.
+			syntax:
+			<jsp:setProperty property="nameOfProperty" name="beanID" value="valueOfProperty"/>
+			example: <jsp:setProperty property="userName" name="user" value="Avinash"/>
+			
+			-<jsp:getProperty>
+			getProperty action tag is used to retrieve the value of specified property.
+			syntax:
+			Username: <jsp:getProperty property="propertyName" name="beanID"/>
+			example:
+			Username: <jsp:getProperty property="userName" name="user"/>
+			
+			- <jsp:include>:
+			include action tag is used to include the content from another jsp or html file.
+			syntax:
+			<jsp:include page="pagetobeIncluded"/>
+			example:
+			<jsp:include page="header.jsp"/>
+			
+			- <jsp:forward>:
+			forward action tag is used to forward the request to another resource. (JSP/Servlet).
+				syntax:
+				<jsp:forward page="anotherresource"/>
+				example:
+				<jsp:forward page="success.jsp"/>
+				
+			JSP implicit objects:
+			---------------------
+			- JSP implicit object are pre-defined java objects that are automatically available in the page without the need of instantiating them.
+			- They are created by JSP container.
+			- They help us to simplify the development process.
+			there are 9 implicit objects.
+			1. out:
+			It is of the type Jspwriter.
+			It writes the output to the response like System.out
+			eg: out.println("Hello");
+			2. request:
+			- It is of the type HttpServletRequest
+			- It provides data from the client.
+			eg: request.getAttribute("username");
+				request.setAttribute("user","username");
+			3. response:
+			- It is of the type HttpServletResponse
+			- Used to process the response sent to client.
+			eg: response.setContentType("text/html");
+			4. Session:
+			- It is of the type HttpSession
+			- used to manage the users session data.
+			ex: session.setAttribute("username","username");
+			5. application:
+			- It is of the type ServletContext
+			- It is used to share data across the whole application
+			example: application.setAttribute("counter",10);
+			6. config:
+			- It is of the type ServletConfig
+			- It Provides servlet configuration information
+			eg: config.getServletName();
+			7. pageContext:
+			- It is of the type PageContext
+			- used to provide access to all scopes and other implicit objects.
+			example: pageContext.setAttribute("city","Delhi",pageContext.SESSION_SCOPE);
+			out.println(pageContext.getAttribute("city",pageContext.SESSION_SCOPE));
+			8. page:
+			- It represents the current jsp page, like 'this' keyword
+			eg: page.getClass().getName();
+			9. exception:
+			- It is of the type Throwable.
+			- It is used in error pages to display exception details.
+			- can be used only for error pages with isErrorPage="true"
+			
+=============================================================================================
+			
+	Hibernate Framework:
+
+1 - Hibernate is a ORM framework.
+2 - It is also called Persistence frameworks.
+3 - Persistence means storing of the data.
+4 - ORM stands for Object Relational Mapping
+5 - Meaning, a java object is mapped to a table's row 
+    in relational database.
+6 - Examples of some ORM frameworks
+    Hibernate,
+    iBatis,
+    Toplink,
+    EclipseLink,
+    Spring Data JPA
+    Apache Open JPA
+7 - Frameworks like Hibernate, EclipseLink, OpenJPA or SpringData JPA 
+    use JPA
+
+8 - JPA stands for Java Persistence API
+    - It is a standard specification for ORM in Java.
+    - It allows developers to map Java objects to database tables using 
+       annotations or XML.
+    - It is not available in JDK by default.
+    - To use JPA we need a JPA provider like Hibernate or EclipseLink as 
+      separate library(JAR) in your project.
+
+Hibernate Annotations:
+
+@Entity:
+- Marks the class as an entity.
+- entity is a class which is mapped to database table.
+-  it is mandatory annotation for any POJO to be treated as hibernate managed object.
+- Without this hibernate will not recognize the class for object relational mapping.
+
+@Table:
+Syntax: @Table(name="tablename")
+- specifies the table name in the database to map the entity.
+- It is optional, if it is not specified, hibernate uses the classname as table name.
+
+@Id
+- It is used above the primary key field in the class.
+- marks the field as the primary key of the entity.
+- every entity must have one and only one field annotated with @Id.
+
+@Column or @Column(name="colnameintable")
+- maps the field to a column in the table.
+- It is optional, if not given hibernate will assume that field name is same as column name.
+			
+			
+Spring Framework:
+
+- Framework is body of prewrittern code used by developers to create applications.
+
+- Spring framework is a popular framework for building java applications.
+
+- It provides a large number of helper classes to simplify the development process.
+
+Loosely Coupled vs Tightly coupled architecture:
+
+Tightly coupled:
+- when one class is highly dependent on another class's concrete implementation.
+- Tightly coupled means classes directly depending on another concrete class.
+- the pronlem with tightly coupled architecture is, if you change one class, you might need to change other class also.
+- It is hard to test or reuse or extend.
+- in the car and engine example, new PetrolEngine() or new DieselEngine() is created inside car constructor.
+
+Loosely coupled:
+- We say architecture is loosely coupled when the classes depend on interfaces instead of concrete classes.
+- It is easy to test, change and reuse the classes independently.
+- In loosely coupled car and engine, petrolengine or DieselEngine are not created in Car constructor, only the interface reference is used in the constructor.
+
+Spring container:
+- Spring Container is the core part of spring framework.
+- It will create and manage the lifecycle of beans.
+- It will: 
+		- read the configuration (spring.xml if xml based configuration)
+		-  Instantiates bean
+		- injects dependencies.
+		
+- Spring Bean:
+			- Spring Bean is an object that is managed by the Spring Container.
+			- It is defined in spring configuration file like spring.xml
+			or
+			It can also be annotated in java class.
+			- It gets automatically gets created, wired and managed by the container.
+		
+		BeanFactory Vs ApplicationContext
+		- Spring uses 2 types of containers.
+		BeanFactory container and ApplicationContext container.
+		
+		differences:
+	BeanFactory:
+		1. Bean is present in org.springframework.beans.factory.BeanFactory
+		2. It uses lazy Initialization, means Beans are created only when requested.
+		3. It is suitable for lightweight applications, where memory is concern.
+		eg: mobile apps, embedded systems.
+		4. It has no support of advanced features like AOP, Messaging, Internalization etc.,
+		
+	ApplicationContext:
+		1. It is present in org.springframework.context.ApplicationContext
+		2. It is advanced container.
+		3. It uses eager Initialization means, all beans are created a startup.
+		4. It extends BeanFactory and adds more features
+			- Internationalization (i18n)
+			- event handling.
+			- AOP integration
+			- BeanPostProcessors.
+			- Resource loading.
+			
+		5. Common implementations:
+			- ClassPathXmlApplicationContext -  used for xml based configuration.
+			- AnnotationConfigApplicationContext - used for annotation based configuration.
+			- FileSystemXmlApplicationContext - used when xml configuration is in file(not default classpath)
+		6. Commonly used when building full-fledged enterprise webapplication.
+
+Spring IOC: Inverison of Control:
+			IOC means giving control to the spring constructor to manage the objects (beans).
+			Instead of the application creating the objects, the container creates and inject them.
+			this is achieved using dependency injection
+			This is useful for loose coupling btw classes.
+			it supports configuration using XML, annotations or java based configuration
+			it helps to manage lifecycle of objects.
+	Dependency Injection (DI):
+	- It is a concept or a design pattern where dependencies are injected into a class by the container.
+	- It removes the need for manual creation of the object using new keyword.
+	there are different types of dependency injection:
+	- constructor injection.
+	- Setter injection.
+	- field injection.
+		
