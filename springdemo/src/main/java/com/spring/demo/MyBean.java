@@ -5,7 +5,7 @@ public class MyBean {
 
 	
 	public MyBean() {
-		System.out.println("MyBean constructor");
+		//System.out.println("MyBean constructor");
 	}
 
 	public String getMesage() {

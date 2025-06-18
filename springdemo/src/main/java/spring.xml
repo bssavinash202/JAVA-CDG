@@ -6,4 +6,28 @@
        <!-- configuration of MyBean -->
        <bean id="myBean" class="com.spring.demo.MyBean"/>
        
+       <!-- Address Bean -->
+       <bean id="address" class="com.spring.di.constInjection.Address">
+	       <constructor-arg value="Hyderabad"/>
+	       <constructor-arg value="Telangana"/>
+       </bean>
+       
+       <!-- Employee Bean -->
+       <bean id="employee" class="com.spring.di.constInjection.Employee">
+	       <constructor-arg value="1001"/>
+	       <constructor-arg value="Avinash"/>
+	       <constructor-arg ref="address"/>
+       </bean>
+       
+       <bean id="directorBean" class="com.spring.di.setterInjection.Director">
+	       <property name="name" value="Zack Synder"/>
+	       <property name="experience" value="9"/>
+       </bean>
+       <bean id="movieBean" class="com.spring.di.setterInjection.Movie">
+	       <property name="title" value="Man of Steel"/>
+	       <property name="rating" value="9.2"/>
+	       <property name="director" ref="directorBean"/>
+       </bean>
+       
+    
   </beans>

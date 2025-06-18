@@ -3635,6 +3635,67 @@ Spring IOC: Inverison of Control:
 	- It removes the need for manual creation of the object using new keyword.
 	there are different types of dependency injection:
 	- constructor injection.
+		- Constructor is one of the ways spring dependency injection is performed.
+		- In this approach spring injects dependencies into a bean using constructor when the bean is created.
+		- In this configuration file, the values are injected into constructor of bean by using a tag <constructor-arg>
+		eg: <constructor-arg value="Hyderabad"/>
+			  <constructor-arg value="Telangana"/>
+		- In the above, address class constructor is injecting 2 values
+		- first argument recieves first constructor-arg
+		- second argument recieves second constructor-arg
+		
+		- if we want to pass the object as an argument to constructor:
+		eg:  <constructor-arg ref="address"/>
+			In the constructor-arg tag, "ref" is used instead of value.
+			"ref" means reference to an object (id of the bean definition).
+			
+		
+		
 	- Setter injection.
+		- In Setter injection, spring uses setter methods to inject the values or dependencies
+		- spring uses the no-argument constructor.
+		- In configuration file, for the bean <property> tag is used to inject the values
+		eg: 
+			 <property name="title" value="Man of Steel"/>
+	       <property name="rating" value="9.2"/>
+	       <property name="director" ref="directorBean"/>
+			In the above, for variables like title and rating, 'value' is provided
+			whereas for objects like 'director', 'ref' keyword is used to refer the Director object using its beanID
+			
 	- field injection.
+		- field injection injects the dependency directly into the field using @Autowired
+		@Component:
+		- It is used to mark a class as Spring managed bean
+		- It is used on top of the class.
+		- when you declare a class with @Component, spring will detect it during the component scanning and register it in the container.
+		eg: 
+				@Component
+				public class MoviePlayer{
+					-----
+				}
+		@Autowired:
+		- It is used to automatically inject a matching bean from the spring container.
+		- It can be used with a field or a setter method or a constructor.
+		
+		@Configuration:
+		- It marks the class as a configuration class, which provides configuration details.
+		- we use this class to replace xml configuration using java based configuration.
+		- this class will also provide details to spring container about the location of the components and details of the beans.
+		
+		@ComponentScan:
+		- It tells spring where to scan for @Component classes
+		- It is used inside @Configuration class.
+		- It enables automatic detection of components in specified packages.
+		eg: 
+			@ComponentScan("com.spring.di.fieldinjection")
+		
+		@Bean:
+		- It is used to declare bean definition in a @Configuration class
+		- It is similar to <bean> tag in xml.
+		- The returned object will be registered as a spring bean.
+		eg: 
+					@Bean
+					public Singer singer() {
+					return new Singer("Billy ellish");
+				}
 		
