@@ -3699,3 +3699,65 @@ Spring IOC: Inverison of Control:
 					return new Singer("Billy ellish");
 				}
 		
+	Webservice: It is a way for two applications to communicate over internet using standard protocols like HTTP.
+		Difference btw webservice and webapplication:
+		- webservice is mainly used for communication btw applications.
+		- web application is used to provide User interface to the users.
+		
+		- Webservice will not have user interface.
+		- It is called by other applications to perform different operations on the data.
+		webapplication is used by users through web browsers
+		
+		There are different types of webservices
+		Majorly webservices are of two types:
+			1. REST webservices
+			2. SOAP webservices
+			
+	1. REST webservices
+	REST: Respresentation State Transfer or Rest
+	- Representation in REST refers to the data being sent btw client and server, but not the actual resource.
+	The format of this representation can be:
+		- JSON - most commonly used format.
+		- XML
+		- HTML
+		- plain text
+		
+	- State Transfer
+	The word 'State Transfer' refers to the state of the resource that is being transfered btw client and server during the interaction.
+	REST supports HTTP methods or VERBS:
+	
+	- GET -  is a verb which is used to fetch the data from the server.
+	- POST - is used to create, or add a new resource eg: adding a student
+	- PUT - used to update an existing resource completely
+	- PATCH - Partially update the resource, (updates part of the resource)
+	- DELETE - deletes removes a resource
+	
+	2. SOAP:
+		- SOAP is a shortform for SImple Object access protocol.
+		- It uses XML for request and response messages.
+		- It can use different types of protocols like HTTP, SMPT etc.,
+		- It is heavy weight and is more secure.
+		- It uses WSDL (web service description language)
+		- Uses WSDL file to provide - webservice details like request and response parameters.
+		
+	Spring Boot RESTful Services:
+	
+	- DispatcherServlet is the main component of Spring MVC or Spring REST
+	- It acts as front controller
+	- front controller acts as single entry point or handling all incoming HTTP requests.
+	- In spring boot or spring mvc applications, DispatcherServlet acts as Front controller.
+	- It helps to redirect the request to appropriate controller method using handler mappings.
+	- Handler Mapping is a component which helps the DispatcherServlet to find the right controller method to handle incoming HTTP request.
+	- When DispatcherServlet recieves the HTTP request,
+		- It checks the handler mapping eg: /fruits or /students/1
+		- it checks for HTTP method - GET or POST etc.
+	- Based on the above, the DispatcherServlet calls the appropriate method in the controller.
+	
+	status code (HTTP respone)
+	each response from REST API include a status code like:
+	200 OK - success.
+	201 created - new resource created
+	400 bad request - invalid input
+	404 not found - resource not found
+	500 internal server error - server error
+	
