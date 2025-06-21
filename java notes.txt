@@ -3761,3 +3761,50 @@ Spring IOC: Inverison of Control:
 	404 not found - resource not found
 	500 internal server error - server error
 	
+	Spring Data JPA:
+	------------------
+	Java persistance API
+		- Hibernate
+		- Toplink
+		- iBatis
+		
+	Spring Data JPA
+	- Built on top of hibernate and Java Persistence API
+	- It provides repository interfaces - JpaRepository, CrudRespository
+	- You need not write SQL or HQL for common queries
+	- less boiler plate code
+	- It uses Hibernate
+	- It requires less configuration 
+	- generally used in all major projects.
+	
+	Common interfaces of SpringDataJpa
+	- These interfaces help us to access the data easily.
+	
+	CrudRespository -> PagingAndSortingRepository -> JpaRepository
+	
+	CrudRespository:
+		- provies basic CRUD operations:
+		- save(), findById(), findAll(), deleteById() etc.,
+		- can use it for basic crud operations.
+		
+		example:
+		public interface StudentRepository extends CrudRespository<Student, Integer>{ }
+		
+	PagingAndSortingRepository:
+		- It extends CrudRespository
+		- It adds support for: 
+				- Pagination with a method findAll(Pageable pageable)
+				- Sorting with a method findAll(Sort sort)
+	
+		example:
+		public interface StudentRepository extends PagingAndSortingRepository<Student, Integer>{ }			
+		
+	JpaRepository:
+	- extends PagingAndSortingRepository
+	- It has advanced features along with the features present in CrudRespository and PagingAndSortingRepository:
+		- saveAll()
+		- flush()
+		- findAll() etc.,
+		
+	example:
+		public interface StudentRepository extends JpaRepository<Student, Integer>{ }
