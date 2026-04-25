@@ -1,0 +1,32 @@
+Template Method pattern:
+- Template method pattern tells us how an algorithm behaves
+- It uses subclasses to provide the implementation Steps.
+- It focuses on behaviour and not object creation.
+
+Steps to create a template method Pattern.
+	- create an abstract class
+		- define the template methods.
+	- write common steps as methods.
+	- declare abstract methods.
+	- create subclass to override abstract methods or steps.
+	- use the template method to execute algorithms.
+	
+Command:
+- Behavioural design pattern
+- It turns a request into an object.
+- this object can be used as a command object.
+- depending on the request in command object , command execution is performed.
+
+Steps for command Pattern:
+1. Create a command interface with abstract method like execute()
+
+2. Create a receiver class
+ - This is an object that perform an action.
+ eg: light fan, TV etc.
+
+3. Create a concrete command classes.
+ - these classes implement the command interface.
+ 
+4. Create a invoker class:
+ - this object holds the command and starts like execution of command
+ eg: RemoteControl

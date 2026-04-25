@@ -3808,3 +3808,83 @@ Spring IOC: Inverison of Control:
 		
 	example:
 		public interface StudentRepository extends JpaRepository<Student, Integer>{ }
+		
+		
+====================================================================================================================
+
+Hospital Management System:
+
+Person - id, name, email, mobile, gender
+	- Doctors - Specialization, experience, degrees, salary
+	- Patients - regDate, age
+	- visit - id - primary key, 
+			  - patient-  foriegn key to patient
+			  doctor- foriegn key to Doctot, 
+			  date, 
+			  disease, 
+			  weight, 
+			  temperature, 
+			  BP, 
+			  Mode of Payment
+			  
+	Annotations used in JPA Relationship
+	
+	Parent:
+	- The entity which has @OneToMany is called a Parent
+	- It maintains a list of Child objects.
+	
+	eg: 
+	@OneToMany(mappedBy="Doctor", cascade=CascadeType.ALL)
+	List<Visit> visits;
+	
+	In the above Doctor is the parent of visit.
+	
+	@OneToMany(mappedBy="Patient", cascade=CascadeType.ALL)
+	List<Visit> visits;
+	
+	In the above patient is the parent of visit.
+	
+	Child:
+		- The Entity that has @ManyToOne annotation
+		- It Contains the foreign key pointing to the Parent
+		eg: 
+		Visit is the child of Doctor and Patient as well.
+		@ManyToOne
+	@JoinColumn(name="p_id")
+	Patient patient;
+	
+	@ManyToOne
+	@JoinColumn(name="d_id")
+	Doctor doctor;
+	
+	Spring Data JPA:
+	- Spring Data JPA can automatically generate SQL queries based on the method names provided in our repository interface.
+	- This feature is called Query Method Derivation, or derived queries or methodName based query generation
+	- This will help us for faster development with less errors.
+	
+	Examples:
+	- we can use the following keywords in the method name:
+		1. findById
+			- It is used for select with condition.
+			- eg: findByName(String name)
+			- internal query generated is:
+			- select--  where name =?
+			
+		2. findAllBy:
+			- finf all matching entries
+			eg: 
+			findAllByDoctor(Doctor doctor);
+			findAllByPatient(Patient patient);
+			findAllByGender(String gender);
+		
+		3. getBy
+			- same as findById
+			eg: getById(int id)
+			
+		4. countBy
+			- counts matching rows;
+			eg: countByGender(String gender)
+			
+		5. existsBy
+			- returns true or false
+			- existsByEmail(String email);
